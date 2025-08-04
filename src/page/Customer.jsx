@@ -55,12 +55,12 @@ function Customer() {
           <button
             className="add_review "
             onClick={() => {
-              setTogglar(true);
               if (!isLogin) {
                 setAlertLogin(true);
                 setShowOverlyBG(true);
                 return;
               }
+              setTogglar(true);
             }}
           >
             Add Review
