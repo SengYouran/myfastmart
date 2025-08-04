@@ -150,6 +150,9 @@ body {
   .container-header {
     opacity: 0;
   }
+  .container-header {
+    width: 30rem;
+  }
   .containerMain {
     margin-left: 0;
   }
