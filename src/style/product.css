@@ -55,7 +55,7 @@
   color: #4caf50;
   font-size: 1.8rem;
   position: relative;
-  z-index: 999;
+  z-index: 99;
   cursor: pointer;
 }
 .fa-bookmark.active {
