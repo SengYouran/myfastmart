@@ -37,6 +37,7 @@ const joinAllArrayProduct = [
   ...all_Juice,
   ...all_Meats,
 ];
+import { useRef } from "react"; // បន្ថែមលើគេ
 const allDataProduct = createContext({ allDataProduct: [] });
 const useDataProduct = () => useContext(allDataProduct);
 function Context({ children }) {
@@ -62,7 +63,6 @@ function Context({ children }) {
   const [selectProvince, setSelectProvince] = useState(false);
   const [selectBank, setSelectBank] = useState("");
   const [point, setPoint] = useState([]);
-
   const [counters, setCounters] = useState(() => {
     try {
       const storeCounter = localStorage.getItem("Counter");
@@ -239,7 +239,14 @@ function Context({ children }) {
       setCreateAccount(updateAccount); // ✅ this is what was missing
     }
   }
+  const isFirstPurchasedRun = useRef(true); // ការការពារ first-run
+
   useEffect(() => {
+    if (isFirstPurchasedRun.current) {
+      isFirstPurchasedRun.current = false;
+      return;
+    }
+
     if (purchased.length > 0) {
       const userIndex = createAccount.findIndex(
         (check) => check.id === currentAccount.id
@@ -247,30 +254,20 @@ function Context({ children }) {
       if (userIndex !== -1) {
         const updateAccount = [...createAccount];
         const user = { ...updateAccount[userIndex] };
-
-        // បន្ថែម purchased ថ្មីទៅ purchased ចាស់ (preserve old items)
         const oldPurchased = user.purchased || [];
 
-        // Option 1: បញ្ចូល purchased ថ្មីចុងក្រោយ
-        const mergedPurchased = [...oldPurchased, ...purchased];
+        const merged = [...oldPurchased, ...purchased].reduce((acc, item) => {
+          if (!acc.find((i) => i.id === item.id)) acc.push(item);
+          return acc;
+        }, []);
 
-        // Option 2: (optional) អាច merge និង remove duplicate តាម id
-        // const mergedPurchased = [...oldPurchased, ...purchased].reduce((acc, item) => {
-        //   if (!acc.find(i => i.id === item.id)) acc.push(item);
-        //   return acc;
-        // }, []);
-
-        user.purchased = mergedPurchased;
+        user.purchased = merged;
         updateAccount[userIndex] = user;
         setCreateAccount(updateAccount);
-        setPurchased([]);
-        /*// preserve old purchased items + add new purchased items
-user.purchased = [...(user.purchased || []), ...purchased];
-*/
+        setPurchased([]); // clear
       }
     }
   }, [purchased]);
-
   useEffect(() => {
     const userIndex = createAccount.findIndex(
       (check) => check.id === currentAccount.id
@@ -331,31 +328,6 @@ user.purchased = [...(user.purchased || []), ...purchased];
     setCounterBag(total);
   }
 
-  const [wishlistActive, setWishlistActive] = useState({});
-  const [updatedWishlist, setUpdateWishlist] = useState([]);
-  useEffect(() => {
-    if (!isLogin) {
-      setShowOverlyBG(true);
-      setAlertLogin(true);
-      return;
-    }
-
-    const userIndex = createAccount.findIndex(
-      (check) => check.id === currentAccount.id
-    );
-
-    if (userIndex !== -1) {
-      const updateAccount = [...createAccount];
-      const user = { ...updateAccount[userIndex] };
-
-      user.wishlist = updatedWishlist;
-      user.wishlistactive = wishlistActive;
-
-      updateAccount[userIndex] = user;
-      setCreateAccount(updateAccount);
-    }
-  }, [wishlistActive, updatedWishlist]);
-
   const handleSelectProvince = (province) => {
     setForm({ ...form, province });
     setSelectProvince(false);
@@ -389,6 +361,31 @@ user.purchased = [...(user.purchased || []), ...purchased];
       alert("User not found.");
     }
   }
+
+  const [wishlistActive, setWishlistActive] = useState({});
+  const [updatedWishlist, setUpdateWishlist] = useState([]);
+  useEffect(() => {
+    if (!isLogin) {
+      setShowOverlyBG(true);
+      setAlertLogin(true);
+      return;
+    }
+
+    const userIndex = createAccount.findIndex(
+      (check) => check.id === currentAccount.id
+    );
+
+    if (userIndex !== -1) {
+      const updateAccount = [...createAccount];
+      const user = { ...updateAccount[userIndex] };
+
+      user.wishlist = updatedWishlist;
+      user.wishlistactive = wishlistActive;
+
+      updateAccount[userIndex] = user;
+      setCreateAccount(updateAccount);
+    }
+  }, [wishlistActive, updatedWishlist]);
   function handleUWishlist(id) {
     if (!isLogin) {
       setShowOverlyBG(true);
@@ -418,7 +415,6 @@ user.purchased = [...(user.purchased || []), ...purchased];
       const updatedWishlist = isExist
         ? wishlist.filter((w) => w.id !== id) // remove
         : [item, ...wishlist]; // add
-      setWishlistActive(newWishlistActive);
       setUpdateWishlist(updatedWishlist);
 
       /* option a
