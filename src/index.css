@@ -38,15 +38,6 @@ body {
   pointer-events: all;
   z-index: 100001;
 }
-.Dashboard {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  background-color: #4caf50;
-  width: 100%;
-  height: 6rem;
-  z-index: 100;
-}
 .container_drinks {
   margin-left: 2rem;
   margin-top: 1rem;
@@ -133,20 +124,6 @@ body {
   .containerMain {
     margin-top: 7rem;
   }
-  .Dashboard {
-    color: #0005f7;
-    text-shadow: 0 0 1rem #eee;
-    font-size: 2rem;
-  }
-  .bigScrenn {
-    left: -1%;
-    top: 1%;
-    font-size: 1rem;
-  }
-  .informInfo {
-    right: 1%;
-    font-size: 1rem;
-  }
   .container-header {
     opacity: 0;
   }
@@ -158,10 +135,6 @@ body {
   }
   .dashboard {
     flex-wrap: wrap;
-  }
-  .Dashboard {
-    text-align: center;
-    margin-right: 1rem;
   }
   .container_Dis_Review {
     flex-wrap: wrap;

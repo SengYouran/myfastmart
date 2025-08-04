@@ -172,5 +172,4 @@ function Policy({ policy, setPolicy }) {
     </React.Fragment>
   );
 }
-
 export default Policy;

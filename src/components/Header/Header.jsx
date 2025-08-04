@@ -29,61 +29,65 @@ function Header({ openCalendar }) {
   }
   return (
     <>
-      <div className="bigScrenn">
-        <i
-          className="fa-solid fa-bars"
-          onClick={() => {
-            setShowHidden(true);
-          }}
-        ></i>
-        <img
-          className="logo_small_media"
-          src={fast_mart}
-          alt="FAST MART LOGO"
-        />
-      </div>
-      <img
-        className="logo_big_screen"
-        src={fast_mart}
-        alt="FAST MART LOGO"
-        onClick={() => navigator("/")}
-      />
-      <div className="informInfo">
-        <i
-          className="fa-solid fa-magnifying-glass"
-          onClick={() => setSearchActive(true)}
-        ></i>
-        <i className="fas fa-calendar-alt" onClick={openCalendar}></i>
-        {isLogin ? (
+      <div className="container_header">
+        <div className="bigScrenn">
           <i
-            className="fa-solid fa-bag-shopping"
+            className="fa-solid fa-bars"
             onClick={() => {
-              setDropItem(true);
-              setShowOverlyBG(true);
+              setShowHidden(true);
             }}
-          >
-            <p className="count_number">{counterBag}</p>
-          </i>
-        ) : null}
-        <div className="accountLogin">
+          ></i>
+          <img
+            className="logo_small_media"
+            src={fast_mart}
+            alt="FAST MART LOGO"
+          />
+        </div>
+        <div className="logo_big_screen">
+          <img
+            className="logo"
+            src={fast_mart}
+            alt="FAST MART LOGO"
+            onClick={() => navigator("/")}
+          />
+        </div>
+        <div className="informInfo">
+          <i
+            className="fa-solid fa-magnifying-glass"
+            onClick={() => setSearchActive(true)}
+          ></i>
+          <i className="fas fa-calendar-alt" onClick={openCalendar}></i>
           {isLogin ? (
             <i
-              className={`fa-solid fa-face-smile `}
-              onClick={() => navigator("/account")}
-            ></i>
-          ) : (
-            <i
-              className={`fa-solid fa-circle-user `}
+              className="fa-solid fa-bag-shopping"
               onClick={() => {
-                handleAccountLogin();
+                setDropItem(true);
+                setShowOverlyBG(true);
               }}
-            ></i>
-          )}
+            >
+              <p className="count_number">{counterBag}</p>
+            </i>
+          ) : null}
+          <div className="accountLogin">
+            {isLogin ? (
+              <i
+                className={`fa-solid fa-face-smile `}
+                onClick={() => navigator("/account")}
+              ></i>
+            ) : (
+              <i
+                className={`fa-solid fa-circle-user `}
+                onClick={() => {
+                  handleAccountLogin();
+                }}
+              ></i>
+            )}
+          </div>
+          <SearchProduct
+            searchActive={searchActive}
+            setSearchActive={setSearchActive}
+          />
         </div>
-        <SearchProduct
-          searchActive={searchActive}
-          setSearchActive={setSearchActive}
-        />
       </div>
       <header className={`container-header ${showHidden ? "open" : ""}`}>
         <div className="child_custom_x" onClick={() => setShowHidden(false)}>
