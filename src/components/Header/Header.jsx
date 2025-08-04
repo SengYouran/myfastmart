@@ -87,10 +87,10 @@ function Header({ openCalendar }) {
         />
       </div>
       <header className={`container-header ${showHidden ? "open" : ""}`}>
-        <i
-          className="fa-solid fa-xmark"
-          onClick={() => setShowHidden(false)}
-        ></i>
+        <div className="child_custom_x" onClick={() => setShowHidden(false)}>
+          <span className="custom_x"></span>
+          <span className="custom_x"></span>
+        </div>
         <h2 className="logo-Mobile">Fast Mart</h2>
         <ChildHeader dataHeader={dataHeader} />
       </header>

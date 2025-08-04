@@ -59,14 +59,6 @@
   color: #cb0404;
   font-size: 1.5rem;
 }
-
-.fa-xmark {
-  float: right;
-  padding: 1rem;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-}
 .bigScrenn {
   position: fixed;
   z-index: 20001;
@@ -170,4 +162,32 @@
   .bigScrenn .logo_small_media {
     margin-left: 1rem;
   }
+}
+.child_custom_x {
+  position: absolute;
+  right: 0rem;
+  top: 2rem;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+.child_custom_x .custom_x {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 0.2rem;
+  background-color: #000;
+  transform-origin: center;
+  transition: all 0.2s ease-in-out;
+}
+.child_custom_x .custom_x:first-child {
+  transform: rotate(45deg);
+}
+.child_custom_x .custom_x:last-child {
+  transform: rotate(-45deg);
+}
+.child_custom_x:hover .custom_x {
+  transform: rotate(0);
 }
