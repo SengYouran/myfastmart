@@ -9,7 +9,8 @@ function Wishlist() {
     isSidebarOpen,
     setCounterBag,
     handleCartItem,
-    handleBagCounter,
+    setCountersWishlist,
+
     setCounters,
     wishlistActive,
     setWishlistActive,
@@ -26,17 +27,25 @@ function Wishlist() {
       (check) => check.id === currentAccount.id
     );
     const updateBags = findIndexUser?.storeBags || [];
+
     if (updateBags) {
-      // ✅ set counter for this product id = 1
-      setCounters((prev) => ({
-        ...prev,
-        [id]: 1,
-      }));
-      setCounterBag((prev) => prev + 1); // Optional: increase visual counter
+      setCountersWishlist((prev) => {
+        const currentValue = prev[id] || 0;
+        const newCounters = {
+          ...prev,
+          [id]: currentValue + 1,
+        };
+
+        return newCounters;
+      });
+
+      // 👉 Optional guard if prev is not defined
+      setCounterBag((prev) => (typeof prev === "number" ? prev + 1 : 1));
 
       removeWishlist(id);
     }
   }
+
   function removeWishlist(id) {
     const findIndexUser = createAccount.find(
       (check) => check.id === currentAccount.id
@@ -100,7 +109,6 @@ function Wishlist() {
                     onClick={() => {
                       handleAddBagCounter(id);
                       handleCartItem(id);
-                      handleBagCounter();
                     }}
                   >
                     Move to bag

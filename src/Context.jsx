@@ -71,6 +71,14 @@ function Context({ children }) {
       return {};
     }
   });
+  const [counterWishlist, setCountersWishlist] = useState(() => {
+    try {
+      const storeCounter = localStorage.getItem("CounterWishlist");
+      return storeCounter ? JSON.parse(storeCounter) : {};
+    } catch (err) {
+      return {};
+    }
+  });
   const [form, setForm] = useState({
     fullName: "",
     phone: "",
@@ -130,6 +138,10 @@ function Context({ children }) {
       JSON.stringify(currentAccount)
     );
     window.localStorage.setItem("Counter", JSON.stringify(counters));
+    window.localStorage.setItem(
+      "CounterWishlist",
+      JSON.stringify(counterWishlist)
+    );
     window.localStorage.setItem("isLogin", JSON.stringify(isLogin));
   }, [counterBag, createAccount, currentAccount, isLogin, counters]);
   function handleCreateAccount(customPassword) {
@@ -325,8 +337,23 @@ function Context({ children }) {
       (sum, count) => sum + count,
       0
     );
-    setCounterBag(total);
+    setCounterBag(
+      (prev) =>
+        total +
+        Object.values(counterWishlist).reduce((sum, count) => sum + count, 0)
+    );
   }
+  // ✅ Auto update counterBag when counters change
+  useEffect(() => {
+    const total = Object.values(counterWishlist).reduce(
+      (sum, count) => sum + count,
+      0
+    );
+    setCounterBag(
+      (prev) =>
+        Object.values(counters).reduce((sum, count) => sum + count, 0) + total
+    );
+  }, [counterWishlist]);
 
   const handleSelectProvince = (province) => {
     setForm({ ...form, province });
@@ -386,6 +413,8 @@ function Context({ children }) {
       setCreateAccount(updateAccount);
     }
   }, [wishlistActive, updatedWishlist]);
+  console.log(counters);
+  console.log(counterBag);
   function handleUWishlist(id) {
     if (!isLogin) {
       setShowOverlyBG(true);
@@ -562,6 +591,7 @@ function Context({ children }) {
         handleUWishlist,
         userPoints,
         setUpdateSpentPoint,
+        setCountersWishlist,
       }}
     >
       {children}
