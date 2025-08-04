@@ -16,6 +16,7 @@ function Header({ openCalendar }) {
   const navigator = useNavigate();
   const [showHidden, setShowHidden] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
+
   const { counterBag, setShowOverlyBG, setDropItem, setHidden, isLogin } =
     useDataProduct();
   function handleAccountLogin() {
@@ -95,7 +96,7 @@ function Header({ openCalendar }) {
           <span className="custom_x"></span>
         </div>
         <h2 className="logo-Mobile">Fast Mart</h2>
-        <ChildHeader dataHeader={dataHeader} setHidden={setHidden} />
+        <ChildHeader dataHeader={dataHeader} setShowHidden={setShowHidden} />
       </header>
     </>
   );

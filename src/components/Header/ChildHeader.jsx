@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-function ChildHeader({ dataHeader, setHidden }) {
+function ChildHeader({ dataHeader, setShowHidden }) {
   const location = useLocation();
   const [active, setActive] = useState(null);
 
@@ -27,7 +27,7 @@ function ChildHeader({ dataHeader, setHidden }) {
             to={path}
             onClick={() => {
               setActive(id);
-              setHidden(false);
+              setShowHidden(false);
             }}
           >
             {link}
