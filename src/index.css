@@ -20,13 +20,23 @@ body {
   position: relative;
 }
 .container-header {
+  background-color: #4caf50;
+  width: 45rem;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   opacity: 0;
   transform: translateX(-30rem);
+  pointer-events: none;
   transition: all 0.5s ease-in-out;
+  z-index: -1;
 }
 .container-header.open {
   opacity: 1;
   transform: translateX(0rem);
+  pointer-events: all;
+  z-index: 100001;
 }
 .Dashboard {
   position: fixed;
