@@ -444,7 +444,7 @@
   scroll-behavior: smooth; /* Keep smooth scrolling */
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  margin-top: 4rem;
+  margin-top: -2rem;
 }
 .container_banner::-webkit-scrollbar {
   display: none;
