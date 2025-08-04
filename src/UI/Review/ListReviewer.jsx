@@ -10,14 +10,13 @@ function ListReviewer({ submit, Julina_Profile }) {
             <div className="child_reviewer" key={create.id}>
               {[1, 2, 3, 4, 5].map((star) => {
                 return (
-                  <span
-                    className="star"
-                    key={star + create.id}
-                    style={{
-                      color: star <= create.rating ? "#4caf50" : "#999",
-                    }}
-                  >
-                    <i class="fa-solid fa-star"></i>
+                  <span className="star" key={star + create.id}>
+                    <i
+                      className="fa-solid fa-star"
+                      style={{
+                        color: star <= create.rating ? "#4caf50" : "#999",
+                      }}
+                    ></i>
                   </span>
                 );
               })}
