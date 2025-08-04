@@ -1,4 +1,4 @@
-import { Dashboard, AboutUs, Customer, Report } from "./page";
+import { Dashboard, AboutUs, Customer } from "./page";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./rootLayout/RootLayout";
@@ -51,10 +51,6 @@ const router = createBrowserRouter([
       {
         path: "review",
         element: <Customer />,
-      },
-      {
-        path: "report",
-        element: <Report />,
       },
       {
         path: "checkouts",

@@ -11,7 +11,6 @@ const dataHeader = [
   { id: 2, link: "📦 Products", path: "/product" },
   { id: 3, link: "🛒 About Us", path: "/about" },
   { id: 4, link: "👤 Reviews", path: "/review" },
-  { id: 5, link: "📈 Contact us", path: "/report" },
 ];
 function Header({ openCalendar }) {
   const navigator = useNavigate();
