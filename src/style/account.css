@@ -1233,6 +1233,7 @@ i {
   color: #fff;
   padding: 1rem;
   border: none;
+  cursor: pointer;
 }
 .container_wishlist .child_no_pruchased {
   display: flex;

@@ -30,7 +30,7 @@ function Wishlist() {
       // ✅ set counter for this product id = 1
       setCounters((prev) => ({
         ...prev,
-        [id]: (prev[id] || 0) + 1, // បន្ថែម counter មុន + 1
+        [id]: 1,
       }));
       setCounterBag((prev) => prev + 1); // Optional: increase visual counter
 
