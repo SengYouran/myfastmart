@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   dataFooter1,
-  dataFooter2,
   dataFooter4,
   dataFooter5,
 } from "../data/footer";

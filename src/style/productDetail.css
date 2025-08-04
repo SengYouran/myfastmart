@@ -173,7 +173,7 @@
   backdrop-filter: blur(0.3rem); /* Apply background blur */
   -webkit-backdrop-filter: blur(0.3rem); /* For Safari */
   inset: 0;
-  z-index: 1;
+  z-index: 100;
   opacity: 1;
   pointer-events: none;
   opacity: 0;
