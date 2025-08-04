@@ -152,6 +152,7 @@ body {
   }
   .container-header {
     width: 30rem;
+    inset: 0;
   }
   .containerMain {
     margin-left: 0;
