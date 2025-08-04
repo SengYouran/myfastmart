@@ -95,7 +95,7 @@ function Header({ openCalendar }) {
           <span className="custom_x"></span>
         </div>
         <h2 className="logo-Mobile">Fast Mart</h2>
-        <ChildHeader dataHeader={dataHeader} />
+        <ChildHeader dataHeader={dataHeader} setHidden={setHidden} />
       </header>
     </>
   );

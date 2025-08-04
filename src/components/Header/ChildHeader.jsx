@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-function ChildHeader({ dataHeader }) {
+function ChildHeader({ dataHeader, setHidden }) {
   const location = useLocation();
   const [active, setActive] = useState(null);
 
- useEffect(() => {
-  const matchedItem = dataHeader.find(({ path }) => {
-    if (path === "/") {
-      return location.pathname === "/";
+  useEffect(() => {
+    const matchedItem = dataHeader.find(({ path }) => {
+      if (path === "/") {
+        return location.pathname === "/";
+      }
+      return location.pathname.startsWith(path);
+    });
+
+    if (matchedItem) {
+      setActive(matchedItem.id);
     }
-    return location.pathname.startsWith(path);
-  });
-
-  if (matchedItem) {
-    setActive(matchedItem.id);
-  }
-}, [location.pathname, dataHeader]);
-
+  }, [location.pathname, dataHeader]);
 
   return (
     <nav>
@@ -26,7 +25,10 @@ function ChildHeader({ dataHeader }) {
           <Link
             className={`list ${active === id ? "active" : ""}`}
             to={path}
-            onClick={() => setActive(id)}
+            onClick={() => {
+              setActive(id);
+              setHidden(false);
+            }}
           >
             {link}
           </Link>
