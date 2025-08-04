@@ -1,0 +1,99 @@
+.container_about {
+  margin: 7rem 8rem 0rem 8rem;
+}
+.container_about .text_about {
+  font-size: 5rem;
+  font-weight: 600;
+  text-align: center;
+  font-family: "Rowdies";
+}
+.container_about .child_who_are {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.container_about .child_who_are .text_who_are {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.container_about .child_who_are .about_text_who_are {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.noted {
+  font-weight: 600;
+}
+.container_about .child_smart {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.container_about .child_smart .text_smart {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.container_about .child_smart .about_smart {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_about .child_about_produt {
+  margin-top: 2rem;
+  display: flex;
+  align-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.container_about .child_about_produt .product_qty {
+  width: 100%;
+  max-width: 45rem;
+  height: auto;
+  object-fit: cover;
+}
+.container_about .child_experience {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.container_about .child_experience .text_experience {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.container_about .child_experience .about_experience {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_about .child_gift {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.container_about .child_gift .text_gift {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.container_about .child_gift .about_gift {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_about .visite_us {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.container_about .visite_us .text_visite {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.container_about .visite_us .about_visite {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+@media screen and (max-width: 767px) {
+  .container_about {
+    margin: 7rem 1rem 0 1rem;
+  }
+}

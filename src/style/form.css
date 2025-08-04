@@ -1,0 +1,475 @@
+.container_form {
+  background-color: #fff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 40rem;
+  height: 100vh;
+  z-index: -1111;
+  overflow-y: auto;
+  transform: translateY(-2rem);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.container_form.showForm {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0rem);
+  z-index: 222222;
+}
+.container_form::-webkit-scrollbar {
+  display: none;
+}
+.container_form .fa-xmark {
+  color: #4caf50;
+  font-size: 2.5rem;
+  animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.container_form .text_form {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+  padding-left: 2rem;
+  margin-top: 2rem;
+}
+.container_form .text_form .login,
+.register {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_form .text_form .login.active,
+.register.active {
+  font-weight: 600;
+  color: #fff;
+  background-color: #4caf50;
+  padding: 0.5rem 0.8rem;
+}
+.container_form .border_form {
+  width: 89%;
+  height: 0.1rem;
+  background-color: #000;
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+}
+.container_form .container_login {
+  display: none;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding: 0 2rem;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+.container_form .container_login.hidden {
+  pointer-events: all;
+  display: flex;
+}
+.container_form .container_login .container_phone,
+.form_password {
+  width: 100%;
+  max-width: 35rem;
+}
+.container_form .container_login .container_phone .telephone,
+.form_password .telephone {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.container_form .container_login .container_phone .phone,
+.form_password .password {
+  width: 100%;
+  height: 3.5rem;
+  border: 0.1rem solid #4caf50;
+  outline: none;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+}
+.container_form .container_login .incorrect {
+  text-align: center;
+  color: #cb0404;
+  margin-top: -1rem;
+  font-size: 1.3rem;
+  display: none;
+}
+.container_form .container_login .incorrect.active {
+  display: block;
+}
+.container_form .container_login .btn_login {
+  background-color: #4caf50;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  color: #fff;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.container_form .container_login .forget_password {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.container_form .container_login .border_or {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.container_form .container_login .border_or .border_left {
+  border: 0.1rem solid #999;
+  width: 50%;
+}
+.container_form .container_login .border_or .text_or {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_form .container_login .border_or .border_right {
+  border: 0.1rem solid #999;
+  width: 50%;
+}
+.container_form .container_login .facebook,
+.google {
+  border: 0.1rem solid #000;
+  position: relative;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+.container_form .container_login .facebook .facebook_logo,
+.google .google_logo {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+}
+.container_form .container_login .facebook .txet_fb,
+.google .txet_fb {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.new_to_register {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+}
+.container_form .container_register {
+  display: none;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 2rem;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+.container_form .container_register.hidden {
+  pointer-events: all;
+  display: flex;
+}
+.container_form .container_register .gender {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.container_form .container_register .gender .text_gender {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.container_form .container_register .gender .men_wowen {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.container_form .container_register .gender .men_wowen input[type="radio"] {
+  width: 2rem;
+  height: 2rem;
+  accent-color: green;
+}
+.container_form .container_register .fullname .name,
+.container_phone .telephone {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.container_photo .text_file {
+  font-size: 1.3rem;
+  color: #fff;
+  background-color: #4caf50;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+}
+.container_form .container_register .fullname .username,
+.container_phone .phone {
+  width: 100%;
+  height: 3.5rem;
+  border: 0.1rem solid #4caf50;
+  outline: none;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+}
+.container_form .container_register .btn_register {
+  background-color: #4caf50;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  color: #fff;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.container_form .container_register .forget_password {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.container_form .container_register .border_or {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.container_form .container_register .border_or .border_left {
+  border: 0.1rem solid #999;
+  width: 50%;
+}
+.container_form .container_register .border_or .text_or {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_form .container_register .border_or .border_right {
+  border: 0.1rem solid #999;
+  width: 50%;
+}
+.container_form .container_register .facebook,
+.google {
+  border: 0.1rem solid #000;
+  position: relative;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+.container_form .container_register .facebook .facebook_logo,
+.google .google_logo {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+}
+.container_form .container_register .facebook .txet_fb,
+.google .txet_fb {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.container_form .bgRegister {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(44, 43, 43, 0.1); /* Add transparency */
+  backdrop-filter: blur(0.3rem); /* Apply background blur */
+  -webkit-backdrop-filter: blur(0.3rem); /* For Safari */
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+.container_form .bgRegister.active {
+  pointer-events: all;
+  opacity: 1;
+}
+.container_form .container_register .password_regsiter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  translate: -50%-50%;
+  z-index: 2;
+  background-color: rgba(44, 43, 43, 0.5); /* Add transparency */
+  backdrop-filter: blur(0.3rem); /* Apply background blur */
+  -webkit-backdrop-filter: blur(0.3rem); /* For Safari */
+  width: 100%;
+  padding: 2rem;
+  pointer-events: none;
+  opacity: 0;
+}
+.container_form .container_register .password_regsiter.active {
+  pointer-events: all;
+  opacity: 1;
+}
+.container_form .container_register .password_regsiter .passd {
+  width: 100%;
+  height: 3.5rem;
+  border: 0.1rem solid #4caf50;
+  outline: none;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+.container_form .container_register .password_regsiter .comfirm {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  background-color: #4caf50;
+  padding: 0.8rem 0;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.container_alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50%-50%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 30rem;
+  height: 20rem;
+  z-index: 10;
+  border-radius: 2rem;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 111;
+  transition: all 0.3s ease-in-out;
+}
+.container_alert.active {
+  pointer-events: all;
+  opacity: 1;
+  transform: scale(1.1);
+}
+.container_alert .fa-triangle-exclamation {
+  font-size: 2.5rem;
+  color: #cb0404;
+}
+.container_alert .no_account {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.container_alert .please_register {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.container_alert .ok_not {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  cursor: pointer;
+}
+.container_alert .ok_not .no_back {
+  font-size: 1.3rem;
+  background-color: rgba(44, 43, 43, 0.1); /* Add transparency */
+  backdrop-filter: blur(0.3rem); /* Apply background blur */
+  -webkit-backdrop-filter: blur(0.3rem); /* For Safari */
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+.container_alert .ok_not .yes_goo {
+  background-color: rgba(255, 2, 2, 1); /* Add transparency */
+  backdrop-filter: blur(0.3rem); /* Apply background blur */
+  -webkit-backdrop-filter: blur(0.3rem); /* For Safari */
+  padding: 0.5rem 1.5rem;
+  font-size: 1.3rem;
+  color: #fff;
+  border-radius: 1rem;
+}
+.flatpickr-calendar {
+  position: fixed !important;
+  top: 6rem !important; /* ប្រសិនបងចង់ចេញក្រោម icon */
+  right: 6rem !important; /* ជាន់ពីស្ដាំ */
+  left: auto !important;
+  transform: none !important;
+  z-index: 9999 !important;
+}
+.calendar-mobile {
+  position: absolute;
+  left: -9999px;
+  visibility: hidden;
+}
+/* លាក់ arrow ដែលជាផ្នែកមួយនៃ popup */
+.flatpickr-calendar .arrow,
+.flatpickr-calendar::before,
+.flatpickr-calendar::after {
+  display: none !important;
+}
+.flatpickr-calendar {
+  background-color: #fff !important;
+  border: 0.1rem solid #f70000 !important;
+  box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+}
+.flatpickr-monthDropdown-months {
+  background-color: rgba(
+    76,
+    175,
+    80,
+    0.8
+  ) !important; /* ពណ៌បៃតង #4caf50 មាន transparency 50% */
+  backdrop-filter: blur(0.3rem) !important; /* Apply background blur */
+  -webkit-backdrop-filter: blur(0.3rem) !important; /* For Safari */
+  border-radius: 1rem !important;
+  color: #fff !important;
+}
+/* ថ្ងៃអាទិត្យ */
+.flatpickr-weekday:nth-child(1),
+.flatpickr-day:nth-child(7n + 1) {
+  color: #f70000;
+  font-weight: 400;
+}
+/* ថ្ងៃសៅរ៍ */
+.flatpickr-weekday:nth-child(7),
+.flatpickr-day:nth-child(7n) {
+  color: #4caf50;
+  font-weight: 400;
+}
+
+.flatpickr-day {
+  color: #cb0404;
+  border-radius: 50%;
+  transition: 0.2s ease;
+}
+.flatpickr-day:hover {
+  background-color: #4caf50 !important;
+  color: #fff;
+}
+.flatpickr-day.today {
+  font-size: 1.5rem;
+  background-color: #f70000;
+  color: #fff;
+  animation: ani_calendar 1s linear infinite;
+}
+@keyframes ani_calendar {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 767px) {
+  .flatpickr-calendar {
+    position: fixed !important;
+    top: 6rem !important; /* ប្រសិនបងចង់ចេញក្រោម icon */
+    right: 1rem !important; /* ជាន់ពីស្ដាំ */
+    left: auto !important;
+    transform: none !important;
+  }
+}

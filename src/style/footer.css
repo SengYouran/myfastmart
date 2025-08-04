@@ -1,0 +1,90 @@
+.container_footer {
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  margin-top: 5rem;
+  background-color: #4caf50;
+}
+.container_footer .child_footer {
+  width: 100%;
+  margin: 2rem;
+}
+.container_footer .child_footer .text_footer {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fff;
+  font-family: "Rowdies";
+}
+.container_footer .child_footer .social_media {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.container_footer .child_footer .social_media i {
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  background-color: #eee;
+  padding: 0.5rem 0.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.container_footer .child_footer .social_media i:hover {
+  color: #eee;
+  background-color: #fa0000;
+}
+.container_footer .child_footer .parent-address {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+.container_footer .child_footer .parent-address i {
+  font-size: 1rem;
+  color: #eee;
+  transition: all 0.3s ease-in-out;
+}
+.container_footer .child_footer .parent-address:hover i {
+  color: #000;
+}
+.container_footer .child_footer .parent-address .text_info {
+  font-size: 1.3rem;
+  color: #fff;
+  font-weight: 400;
+
+  transition: all 0.3s ease-in-out;
+}
+.container_footer .child_footer .parent-address:hover .text_info {
+  color: #000;
+}
+.container_footer .child_footer .parent-app .text_info {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-top: 1.5rem;
+}
+.container_footer .child_footer .parent-app .image_app {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.container_footer .child_footer .parent-app .image_app img {
+  width: 13rem;
+  margin-top: 2rem;
+}
+.text_year_footer {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_footer .child_footer .parent-payment .We_accept_payments {
+  margin-top: 2rem;
+  width: 25rem;
+}
+@media screen and (max-width: 767px) {
+  .container_footer {
+    margin-top: 7rem;
+  }
+}

@@ -1,0 +1,458 @@
+.shop_more {
+  margin: 7rem 3rem 0rem 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+.shop_more .more,
+.ordernow {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.container_order {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5rem;
+  background-color: #fff;
+  padding: 3rem 0;
+  margin: 0 3rem;
+  border-radius: 1rem;
+  position: relative;
+}
+.container_order .child_product {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.container_order .child_product .big_product {
+  width: 30rem;
+  height: 30rem;
+  border: 0.1rem solid #4caf50;
+  background-color: #fff;
+  padding: 1rem;
+}
+.container_order .child_product .small_product {
+  width: 10rem;
+  height: 10rem;
+  border: 0.1rem solid #4caf50;
+  background-color: #fff;
+  padding: 1rem;
+}
+.container_order .product_infomation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-left: 2rem;
+}
+.container_order .product_infomation .qaulity,
+.code_product {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_order .product_infomation .khmer_price,
+.usa_price,
+.price_1item,
+.text_information,
+.name_product {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_order .product_infomation .kh,
+.usa {
+  color: #4caf50;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.container_order .product_infomation .addCard_counter {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.container_order .product_infomation .addCard_counter .fa-minus,
+.fa-plus {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.container_order .product_infomation .addCard_counter .fa-minus.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+  color: #999;
+}
+.container_order .product_infomation .addCard_counter .num_count {
+  font-size: 1.5rem;
+  font-weight: 400;
+  border: 0.1rem solid #4caf50;
+  padding: 0.5rem 2.5rem;
+  border-radius: 2rem;
+}
+.container_order .product_infomation .add_to_card {
+  margin-top: 0.5rem;
+  background-color: #4caf50;
+  padding: 0.5rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.container_order .product_infomation .add_to_card .card {
+  width: 2rem;
+  animation: goAddCard 1.5s linear infinite;
+}
+@keyframes goAddCard {
+  0% {
+    transform: translateX(1rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.container_order .product_infomation .add_to_card .text_add {
+  color: #fff;
+  font-size: 1.5rem;
+}
+.container_order .product_infomation .border_order {
+  border: 0.1rem solid #4caf50;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+.container_toBage {
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  width: 100%;
+  height: 60%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(2rem);
+  z-index: 99999;
+}
+.container_toBage.show_bag {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: all;
+}
+.container_toBage .child_product_bag .bag_img {
+  width: 15rem;
+  height: 15rem;
+  border: 0.1rem solid #4caf50;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.container_toBage .child_text_bag {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.container_toBage .child_text_bag .bag_text,
+.bag_price {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.container_toBage .child_text_bag .go_bag {
+  background-color: #4caf50;
+  padding: 1rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.bgOverlyFull {
+  position: fixed;
+  background-color: rgba(44, 43, 43, 0.1); /* Add transparency */
+  backdrop-filter: blur(0.3rem); /* Apply background blur */
+  -webkit-backdrop-filter: blur(0.3rem); /* For Safari */
+  inset: 0;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-2rem);
+  z-index: 1;
+}
+.bgOverlyFull.showOverlyBG {
+  pointer-events: all;
+  transform: translateX(0);
+  opacity: 1;
+}
+.similar_text {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-left: 3rem;
+  margin-top: 1rem;
+}
+.AboutMart {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-top: 0.1rem solid #4caf50;
+  margin-bottom: -3rem;
+}
+.AboutMart .box_aboutMart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.AboutMart .box_aboutMart .img {
+  width: 7rem;
+}
+.AboutMart .box_aboutMart .aboutText {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.hero-products1 {
+  background-color: #fff;
+  height: 100%;
+  position: fixed;
+  top: 0rem;
+  right: 0rem;
+  z-index: 10001;
+  transform: translateX(2rem);
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+.hero-products1.active {
+  transform: translateX(0);
+  pointer-events: all;
+  opacity: 1;
+}
+.hero-products1 .fa-x:hover {
+  transform: rotate(180deg);
+  text-shadow: 0 0 1rem #4caf50, 0 0 2rem #4caf50;
+}
+.hero-products1 .fa-x {
+  color: #000;
+  float: right;
+  margin-top: 1rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 1rem;
+}
+.hero-products1 .child-product1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  width: 100%;
+  padding: 0 2rem;
+}
+.hero-products1 .child-product1 .text-about {
+  overflow-y: auto;
+  max-height: 50vh; /* ឧទាហរណ៍ */
+  padding-right: 1rem;
+  margin-top: 5rem;
+}
+/* Scrollbar Container */
+.hero-products1 .child-product1 .text-about::-webkit-scrollbar {
+  width: 0.3rem; /* កំណត់ទទឹងស្ក្រូល */
+}
+
+/* Scrollbar Track (ផ្ទៃខាងក្រោយ) */
+.hero-products1 .child-product1 .text-about::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 0.5rem;
+}
+
+/* Scrollbar Thumb (ដើមរបារ) */
+.hero-products1 .child-product1 .text-about::-webkit-scrollbar-thumb {
+  background: #4caf50;
+  border-radius: 0.5rem;
+}
+
+/* Scrollbar Thumb Hover */
+.hero-products1 .child-product1 .text-about::-webkit-scrollbar-thumb:hover {
+  background: #b93b68;
+}
+
+.hero-products1 .child-product1 .text-about .child_text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.border_oder_bag {
+  border: 0.1rem solid #4caf50;
+}
+
+.hero-products1 .child-product1 .text-about .child_text .products1 .img-pro1 {
+  width: 15rem;
+  height: 15rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.hero-products1
+  .child-product1
+  .text-about
+  .child_text
+  .container_infoProduct
+  .about
+  .text-h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 20rem;
+}
+.hero-products1 .child-product1 .text-about .child_text .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero-products1 .child-product1 .text-about .child_text .title .fa-trash {
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+}
+.hero-products1 .child-product1 .text-about .child_text .title .happy {
+  font-size: 1.3rem;
+  color: #525050;
+  margin: 1rem 0;
+}
+.hero-products1 .child-product1 .text-about .child_text .qty .text-h3 {
+  font-size: 1.5rem;
+  color: #000;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+.hero-products1 .child-product1 .text-about .child_text .qty .fa-chevron-down {
+  color: #999;
+  font-size: 1.3rem;
+  border: 0.1rem solid #d5d3d3;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+.hero-products1 .child-product1 .text-about .child_text .price-checkout {
+  display: flex;
+  justify-content: space-between;
+}
+.hero-products1
+  .child-product1
+  .text-about
+  .child_text
+  .price-checkout
+  .after-dis {
+  font-size: 1.3rem;
+  color: #999;
+  font-weight: 400;
+}
+.hero-products1
+  .child-product1
+  .text-about
+  .child_text
+  .price-checkout
+  .curr-price {
+  font-size: 1.3rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+}
+.border_checkOut {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #999;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+.hero-products1 .child-product1 .conatiner_pay {
+  margin-top: -5rem;
+  background-color: #fff;
+  width: 100%;
+}
+.hero-products1 .child-product1 .conatiner_pay .amountPay,
+.delivery {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2rem;
+}
+.hero-products1 .child-product1 .conatiner_pay .amountPay .amount {
+  font-size: 1.5rem;
+  color: #000;
+  margin-bottom: 1rem;
+}
+.hero-products1 .child-product1 .conatiner_pay .amountPay .amount-price,
+.amount_khmer {
+  font-size: 1.5rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+}
+.hero-products1 .child-product1 .conatiner_pay .delivery .delivery-text,
+.delivery-price {
+  font-size: 1.3rem;
+  color: #525050;
+  margin-bottom: 2rem;
+}
+.hero-products1 .child-product1 .conatiner_pay .checkOut {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.hero-products1 .child-product1 .conatiner_pay .checkOut .checkOut-item {
+  text-decoration: none;
+  background-color: #4caf50;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+}
+.hero-products1 .child-product1 .conatiner_pay .checkOut .checkFlower {
+  text-decoration: none;
+  background-color: #4caf50;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.hero-products1 .noItemInBag {
+  text-align: center;
+  margin: 15rem 0;
+}
+.hero-products1 .noItemInBag .emptyBag {
+  color: #000;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero-products1 .noItemInBag .pText {
+  color: #525050;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.hero-products1 .noItemInBag .startShopping {
+  color: #999;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.hero-products1 .noItemInBag .checkFlower {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: #4caf50;
+  padding: 1rem 5rem;
+}

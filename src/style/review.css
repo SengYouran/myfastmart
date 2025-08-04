@@ -1,0 +1,151 @@
+.container_text {
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 7rem 2rem;
+}
+.container_text .txt_review {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.container_text .add_review {
+  color: #fff;
+  background-color: #4caf50;
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding: 1rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.container_add_review {
+  position: absolute;
+  top: 12rem;
+  right: 0rem;
+  background-color: #fff;
+  padding: 2rem;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0);
+  z-index: 1000;
+}
+.container_add_review.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.container_add_review .child_add_review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.container_add_review .child_add_review .text_logo {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #4caf50;
+  font-family: "Rowdies";
+}
+.container_add_review .child_add_review .stars .star {
+  font-size: 5rem;
+  font-family: "Rowdies";
+  cursor: pointer;
+}
+.container_add_review .child_add_review .text_review .text_area {
+  width: 40rem;
+  height: 10rem;
+  outline: 0.1rem solid #4caf50;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+.container_add_review .child_add_review .text_review .set_value {
+  color: #fa0000;
+  font-size: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0);
+}
+.container_add_review .child_add_review .text_review .set_value.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.container_add_review .child_add_review .button {
+  color: #fff;
+  width: 40rem;
+  padding: 1rem;
+  background-color: #4caf50;
+  border: 0.1rem solid #fff;
+  cursor: pointer;
+}
+.box_reviewer {
+  display: grid;
+  gap: 3rem;
+  margin:  2rem;
+}
+.box_reviewer .child_reviewer {
+  box-shadow: 0 0 1rem #4caf50;
+  border-radius: 0.5rem;
+}
+.box_reviewer .child_reviewer .star {
+  font-size: 2rem;
+  color: #4caf50;
+  padding: 1rem;
+}
+.box_reviewer .child_reviewer .comment .text-customer {
+  font-size: 1rem;
+  color: #999;
+  width: 80%;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+.box_reviewer .child_reviewer .user_profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box_reviewer .child_reviewer .user_profile .profile {
+  display: flex;
+  align-items: center;
+  width: 70%;
+}
+.box_reviewer .child_reviewer .user_profile .profile .picture{
+  width: 100%;
+  max-width: 5rem;
+  margin-left: 1rem;
+}
+.box_reviewer .child_reviewer .user_profile .profile .picture img{
+  width: 100%;
+  height: 5rem;
+  border: .2rem solid #4caf50;
+  border-radius: 50%;
+}
+.box_reviewer .child_reviewer .user_profile .profile .user_name{
+  margin-left: 0.5rem;
+}
+.box_reviewer .child_reviewer .user_profile .profile .user_name .name{
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.box_reviewer .child_reviewer .user_profile .profile .user_name .happy_review{
+  font-size: 1rem;
+  color: #333;
+}
+.box_reviewer .child_reviewer .user_profile .quote_left{
+  width: 30%;
+}
+.box_reviewer .child_reviewer .user_profile .fa-quote-left {
+  font-size: 5rem;
+  margin-right: 1rem;
+  color: #999;
+  opacity: 0.5;
+  float: right;
+}
+.box_reviewer .no_data {
+  font-size: 2rem;
+  color: #4caf50;
+  font-family: "Rowdies";
+}

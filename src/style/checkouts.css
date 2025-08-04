@@ -1,0 +1,838 @@
+.container_alert_address {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50%-50%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 30rem;
+  height: 20rem;
+  z-index: 10;
+  border-radius: 2rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.container_alert_address.active {
+  pointer-events: all;
+  opacity: 1;
+  transform: scale(1.1);
+}
+.container_alert_address .fa-triangle-exclamation {
+  font-size: 2.5rem;
+  color: #cb0404;
+}
+.container_alert_address .no_account {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.container_alert_address .please_register {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.container_alert_address .ok_not {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  cursor: pointer;
+}
+.container_alert_address .ok_not .no_back {
+  font-size: 1.3rem;
+  background-color: rgba(44, 43, 43, 0.1); /* Add transparency */
+  backdrop-filter: blur(0.3rem); /* Apply background blur */
+  -webkit-backdrop-filter: blur(0.3rem); /* For Safari */
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+.container_alert_address .ok_not .yes_goo {
+  background-color: rgba(255, 2, 2, 1); /* Add transparency */
+  backdrop-filter: blur(0.3rem); /* Apply background blur */
+  -webkit-backdrop-filter: blur(0.3rem); /* For Safari */
+  padding: 0.5rem 1.5rem;
+  font-size: 1.3rem;
+  color: #fff;
+  border-radius: 1rem;
+}
+.container_checkout {
+  display: grid;
+  margin-top: 8rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 2rem;
+}
+.container_checkout .child_address_product {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.container_checkout .child_address_product .child_addr {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.container_checkout .child_address_product .child_addr .address {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.container_checkout .child_address_product .child_addr .address .text_addr {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.container_checkout .child_address_product .child_addr .address .fa-plus {
+  font-size: 1.5rem;
+  border: 0.2rem solid #4caf50;
+  padding: 0.2rem 0.3rem;
+  border-radius: 50%;
+}
+.container_checkout .child_address_product .child_addr .info_addr_null {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  cursor: pointer;
+}
+.container_checkout
+  .child_address_product
+  .child_addr
+  .info_addr_null
+  .info_addr {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+}
+.container_checkout
+  .child_address_product
+  .child_addr
+  .info_addr
+  .fa-square-check {
+  color: green;
+  font-size: 2rem;
+}
+.container_checkout .child_address_product .child_addr .info_addr .info_user {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_checkout .child_address_product .my_bags {
+  margin-top: 1.5rem;
+}
+.container_checkout .child_address_product .my_bags .text_my_bags {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.container_checkout .child_address_product .my_bags .border_my_bags {
+  border: 0.1rem solid #999;
+  width: 80%;
+  margin-top: 1rem;
+}
+.container_checkout_product {
+  margin-top: 1rem;
+  width: 80%;
+}
+.container_checkout_product .container_my_bags {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-top: 1rem;
+}
+.container_checkout_product .container_my_bags .child_my_bags {
+  display: flex;
+  gap: 2rem;
+}
+.container_checkout_product .container_my_bags .child_my_bags .info_my_bags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.container_checkout_product
+  .container_my_bags
+  .child_my_bags
+  .info_my_bags
+  .text_pro_my_bags {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.container_checkout_product
+  .container_my_bags
+  .child_my_bags
+  .info_my_bags
+  .code_product {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.container_checkout_product .container_my_bags .child_my_bags .product_my_bags {
+  width: 10rem;
+  height: 10rem;
+  margin-left: 1rem;
+}
+.container_checkout_product .container_price_my_bags {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.container_checkout_product .container_price_my_bags .price_my_bags {
+  font-size: 1.5rem;
+  color: #fa0000;
+}
+.container_checkout .child_bank_amountPay {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 85%;
+}
+.container_checkout .child_bank_amountPay .text_bank {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.container_checkout .child_bank_amountPay .cart_bank {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 30rem;
+}
+.container_checkout .child_bank_amountPay .cart_bank input[type="checkbox"] {
+  width: 2rem;
+  height: 2rem;
+  accent-color: green;
+  cursor: pointer;
+}
+.container_checkout .child_bank_amountPay .cart_bank .cart {
+  width: 100%;
+  height: 4rem;
+}
+.container_checkout .child_bank_amountPay .container_receiver {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.container_checkout .child_bank_amountPay .container_receiver .reeciver {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.container_checkout
+  .child_bank_amountPay
+  .container_receiver
+  .checkbox_form_phone {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.container_checkout
+  .child_bank_amountPay
+  .container_receiver
+  .checkbox_form_phone
+  .fa-square-check {
+  color: green;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.container_checkout
+  .child_bank_amountPay
+  .container_receiver
+  .checkbox_form_phone
+  .receiver_phone {
+  width: 100%;
+  height: 4rem;
+  border: 0.1rem solid #4caf50;
+  outline: none;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+}
+.container_checkout .child_bank_amountPay .container_gift {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.container_checkout .child_bank_amountPay .gift_point_check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container_checkout
+  .child_bank_amountPay
+  .container_gift
+  .gift_point_check
+  .check_gift {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+.container_checkout
+  .child_bank_amountPay
+  .container_gift
+  .gift_point_check
+  .gift_card {
+  color: #fa0000;
+  cursor: pointer;
+}
+.container_checkout .child_bank_amountPay .container_gift .text_gift {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.container_checkout .child_bank_amountPay .container_gift .child_gift_point {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+.container_checkout
+  .child_bank_amountPay
+  .container_gift
+  .child_gift_point
+  .conde_gift {
+  width: 100%;
+  height: 4rem;
+  border: 0.1rem solid #4caf50;
+  outline: none;
+  font-size: 1.5rem;
+  padding-left: 1rem;
+}
+.container_checkout
+  .child_bank_amountPay
+  .container_gift
+  .child_gift_point
+  .apply_gift {
+  display: flex;
+  flex-direction: column;
+}
+
+.container_checkout
+  .child_bank_amountPay
+  .container_gift
+  .child_gift_point
+  .apply_gift
+  .apply {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  border: 0.1rem solid #4caf50;
+  background-color: #fff;
+  padding: 0.8rem 3rem;
+  cursor: pointer;
+}
+/*===========================Point==============================*/
+.container_checkout .child_bank_amountPay .child_point {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.container_checkout .child_bank_amountPay .child_point .point_quetion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.container_checkout
+  .child_bank_amountPay
+  .child_point
+  .point_quetion
+  .text_point {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.container_checkout
+  .child_bank_amountPay
+  .child_point
+  .point_quetion
+  .fa-question {
+  font-size: 1.3rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 40%;
+  color: #fff;
+  background-color: #000;
+}
+.container_checkout .child_bank_amountPay .child_point .point {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #e3e3e3;
+  width: 100%;
+  height: 5rem;
+  position: relative;
+  cursor: pointer;
+}
+.showPoint {
+  position: absolute;
+  top: -4.5rem;
+  left: 0;
+  background-color: #fff;
+  width: 20rem;
+  height: 5rem;
+  border: 0.1rem solid #000;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(2rem);
+}
+.showPoint.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.showPoint .your_point {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+}
+.no_yes {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  top: -2rem;
+  left: 3.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(2rem);
+}
+.no_yes.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.no_yes .no_spent {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.no_yes .yes_spent {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.container_checkout
+  .child_bank_amountPay
+  .child_point
+  .point
+  .fa-money-check-dollar {
+  color: #00bb;
+  font-size: 1.5rem;
+}
+.container_checkout .child_bank_amountPay .child_point .point .use_point {
+  color: #4caf50;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.container_checkout .child_bank_amountPay .child_point .point .price_in1 {
+  font-size: 1.1rem;
+}
+/**=============================Comment=====================*/
+.container_checkout .child_bank_amountPay .child_comment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.container_checkout .child_bank_amountPay .child_comment .text_comment {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.container_checkout .child_bank_amountPay .child_comment .form_comment {
+  width: 100%;
+  height: 10rem;
+  padding: 1rem;
+  outline: none;
+  border: 0.1rem solid #4caf50;
+  resize: vertical;
+}
+/*==============================Amount to pay===================*/
+.container_checkout .child_bank_amountPay .container_payment {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.container_checkout .child_bank_amountPay .container_payment .text_pay {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.container_checkout
+  .child_bank_amountPay
+  .container_payment
+  .border_payment_checkout {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #000;
+  margin-top: -1rem;
+}
+.conatiner_payment_checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.conatiner_payment_checkout .child_USD,
+.child_KHR,
+.child_delivery {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.conatiner_payment_checkout .child_USD .text_price_USD,
+.child_KHR .text_price_USD {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.conatiner_payment_checkout .child_delivery .delivery-text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: -1.5rem;
+}
+.conatiner_payment_checkout .child_delivery .delivery-price {
+  font-size: 1.3rem;
+}
+.conatiner_payment_checkout .child_delivery .delivery-price.active {
+  text-decoration: line-through;
+  text-decoration-color: #fa0000;
+  text-decoration-thickness: 0.2rem;
+}
+.conatiner_payment_checkout .child_USD .price_USD,
+.child_KHR .price_KHR {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #4caf50;
+}
+.conatiner_payment_checkout .checkout_place {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.conatiner_payment_checkout .checkout_place .container_checkouts_item {
+  background-color: #4caf50;
+  width: 60%;
+  padding: 1rem 0;
+}
+.conatiner_payment_checkout
+.checkout_place
+.container_checkouts_item
+.checkouts_item {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  width: 100%;
+  background-color: #4caf50;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.container_shopping_more {
+  background-color: #4caf50;
+  width: 40%;
+  padding: 1rem 0;
+}
+.container_shopping_more .shopping_more {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+.xmark_icon {
+  position: absolute;
+  top: 7rem;
+  right: 2rem;
+  color: #fa0000;
+  font-size: 4rem;
+  z-index: 22222;
+  opacity: 0;
+}
+.xmark_icon.active {
+  opacity: 1;
+}
+.box_add_address_checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50%-50%;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-2rem);
+  transition: all 0.3s ease-in-out;
+}
+.box_add_address_checkout.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+  z-index: 123456789;
+}
+.box_add_address_checkout .form_fullname-address .text_name_address {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.box_add_address_checkout .form_fullname-address .input_username {
+  width: 100%;
+  height: 4rem;
+  border: 0.1rem solid #fa0000;
+  outline: none;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+}
+.box_add_address_checkout .form_telephon .text_mobile_number {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.box_add_address_checkout .form_telephon .form_mobile_input {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.box_add_address_checkout .form_telephon .form_mobile_input .number_code {
+  background-color: #fa0000;
+  border: 0.1rem solid #fff;
+  color: #fff;
+  outline: none;
+  text-align: center;
+  width: 8rem;
+  height: 4rem;
+}
+.box_add_address_checkout .form_telephon .form_mobile_input .number_phone {
+  width: 100%;
+  height: 4rem;
+  border: 0.1rem solid #fa0000;
+  outline: none;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+}
+.box_add_address_checkout .form_add_input_address .text_add_address {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.box_add_address_checkout .form_add_input_address .input_address {
+  width: 100%;
+  height: 4rem;
+  border: 0.1rem solid #fa0000;
+  outline: none;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+}
+.box_add_address_checkout .form_select_country_province {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.box_add_address_checkout .form_select_country_province .text_country {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.box_add_address_checkout .form_select_country_province .country_province {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-left: 2rem;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .text_input_country,
+.city_province {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.4;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_country,
+.child_province {
+  position: relative;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_country
+  .country,
+.child_province .province {
+  width: 100%;
+  height: 4rem;
+  border: 0.1rem solid #fa0000;
+  outline: none;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+  cursor: pointer;
+}
+
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_country
+  .fa-chevron-down,
+.child_province .fa-chevron-down {
+  position: absolute;
+  top: 3rem;
+  right: 0.8rem;
+  color: #000;
+  cursor: pointer;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_province
+  .list_city_province {
+  background-color: #fff;
+  overflow-y: auto;
+  width: 17.4rem;
+  max-height: 25rem;
+  border: 0.1rem solid #fa0000;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  position: absolute;
+  bottom: 100%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: -20000;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_province
+  .list_city_province.active {
+  pointer-events: all;
+  opacity: 1;
+  z-index: 2222222;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_province
+  .list_city_province::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_province
+  .list_city_province::-webkit-scrollbar-track {
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_province
+  .list_city_province::-webkit-scrollbar-thumb {
+  background-color: #fa0000;
+  border-radius: 0.5rem;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_province
+  .list_city_province::-webkit-scrollbar-thumb:hover {
+  background-color: #fa0000;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_province
+  .list_city_province
+  .any_list {
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 0.5rem;
+}
+.box_add_address_checkout
+  .form_select_country_province
+  .country_province
+  .child_province
+  .list_city_province
+  .any_list:hover {
+  background-color: #e3e3e3;
+  width: 100%;
+}
+.box_add_address_checkout .save_infomation {
+  background-color: #fa0000;
+  margin-top: 1rem;
+}
+.box_add_address_checkout .save_infomation .save_btn {
+  font-size: 1.5rem;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.8rem;
+  color: #fff;
+}
+.container_voucher {
+  background-color: #fff;
+  position: fixed;
+  top: 0rem;
+  right: 0;
+  width: 37rem;
+  min-height: 100vh;
+  z-index: -99999;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(2rem);
+}
+.container_voucher.active {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 99999;
+}
+.container_voucher .text_exit_voucher {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 2rem;
+}
+.container_voucher .text_exit_voucher .select_voucher {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_voucher .text_exit_voucher .fa-xmark {
+  font-size: 2.5rem;
+  color: #000;
+  cursor: pointer;
+}
+.container_voucher .child_voucher {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.container_voucher .child_voucher .no_voucher {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+@media screen and (max-width: 767px) {
+  .container_checkout .child_address_product .my_bags .border_my_bags {
+    border: 0.1rem solid #999;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .container_checkout_product {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}

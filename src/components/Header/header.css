@@ -1,0 +1,173 @@
+.container-header {
+  background-color: #4caf50;
+  width: 30rem;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100001;
+}
+.informInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  top: 1%;
+  right: 3%;
+  z-index: 1001;
+}
+.informInfo i {
+  font-size: 2.5rem;
+  color: #eee;
+  margin-top: 1.3rem;
+  cursor: pointer;
+}
+.informInfo .accountLogin {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.informInfo .accountLogin .fa-face-smile {
+  font-size: 2.5rem;
+  color: #cb0404;
+  margin-top: 1.3rem;
+  cursor: pointer;
+}
+
+.informInfo .accountLogin .fa-circle-user {
+  font-size: 2.5rem;
+  color: #eee;
+  margin-top: 1.3rem;
+  cursor: pointer;
+}
+
+.fa-calendar-alt,
+.fa-magnifying-glass {
+  border-right: 0.1rem solid #eee;
+  padding-right: 1.3rem;
+}
+.fa-bag-shopping {
+  position: relative;
+  border-right: 0.1rem solid #eee;
+  padding-right: 1.3rem;
+}
+.fa-bag-shopping .count_number {
+  position: absolute;
+  top: 70%;
+  left: 32%;
+  translate: -50% -50%;
+  color: #cb0404;
+  font-size: 1.5rem;
+}
+
+.fa-xmark {
+  float: right;
+  padding: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.bigScrenn {
+  position: fixed;
+  z-index: 20001;
+  top: -1.5rem;
+  left: 0rem;
+  display: flex;
+  align-items: center; /* ✅ Center vertically */
+  gap: 1rem; /* Space between icon and logo */
+}
+
+.bigScrenn .fa-bars {
+  font-size: 3rem;
+  border-radius: 1rem;
+  color: #fff;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+}
+.bigScrenn .logo_small_media {
+  margin-top: 1.3rem;
+  width: 20rem;
+  height: auto; /* ✅ auto height so it scales correctly */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-left: -3rem;
+}
+
+.logo_big_screen {
+  position: fixed;
+  top: 5.6%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 1001;
+  width: 30%;
+  cursor: pointer;
+}
+.logo-Mobile {
+  margin-top: 2rem;
+  color: #fff;
+  font-size: 5rem;
+  font-family: "Rowdies";
+  cursor: pointer;
+}
+.container-header nav {
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.container-header nav .list-wrapper .list {
+  font-size: 2rem;
+  color: #fff;
+  background-color: #4caf50;
+}
+.container-header nav .list-wrapper .list.active {
+  font-weight: 600;
+  color: #4caf50;
+  background-color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 2rem;
+}
+.container-header nav .list-wrapper .sub-menu {
+  margin-top: -0.1rem;
+  margin-left: 4rem;
+}
+.container-header nav .list-wrapper .sub-menu .sub-item {
+  font-size: 1.5rem;
+  color: #eee;
+  padding: 0.5rem 0;
+}
+.container-header nav .list-wrapper .sub-menu .sub-item.color {
+  font-weight: 600;
+  font-size: 2rem;
+  color: #d4bd0d;
+}
+.logOut {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 15rem;
+  margin-left: 2rem;
+  cursor: pointer;
+}
+.logOut .out,
+.fa-sign-out-alt {
+  color: #cb0404;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .bigScrenn .logo_small_media {
+    opacity: 1 !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .bigScrenn .logo_small_media {
+    opacity: 1 !important;
+  }
+  .bigScrenn .logo_small_media {
+    margin-left: 1rem;
+  }
+}

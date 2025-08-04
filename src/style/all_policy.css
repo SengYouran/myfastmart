@@ -1,0 +1,103 @@
+.container_policy {
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 94%;
+  height: 35rem;
+  margin: 0 3rem 0 3rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-5rem);
+  z-index: -2;
+}
+.container_policy.active {
+  transform: translateY(0);
+  pointer-events: all;
+  opacity: 1;
+  z-index: 999999;
+}
+.background_policy {
+  background-color: #555;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  transition: all 0.3s ease-in-out;
+  z-index: -2;
+  overflow-y: hidden;
+  opacity: 0;
+}
+.background_policy.active {
+  opacity: 0.5;
+  z-index: 999998;
+}
+.container_policy .fa-xmark {
+  color: #999;
+  margin-right: 2rem;
+  font-size: 2.5rem;
+}
+.container_policy .fa-xmark:hover {
+  color: #555;
+}
+.container_policy .child_policy {
+  border: 0.1rem solid #999;
+  margin: 5rem;
+  padding: 2rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 60vh;
+}
+.border_policy {
+  border: 0.1rem solid #eee;
+  margin: 3rem 0;
+}
+.container_policy .child_policy .text_policy,
+.text_policy_logData {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.container_policy .child_policy .text_policy_s1 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.container_policy .child_policy .text_policy_s1 .text_s1,
+.text_s2,
+.text_s3,
+.text_s4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_policy .child_policy .text_policy_info {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.container_policy .child_policy .text_policy_info2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.container_policy .child_policy .text_policy_info2 .text_info_s1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.container_policy .child_policy .text_policy_info2 .google_facebook {
+  color: blue;
+}
+.container_policy .child_policy .log_data .text_log_data,
+.cookie .text_cookie,
+.service_provider .text_service_provider,
+.security .text_security {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+}
+.noted {
+  font-weight: 600;
+}
