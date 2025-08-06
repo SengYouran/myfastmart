@@ -41,6 +41,7 @@ import { useRef } from "react"; // បន្ថែមលើគេ
 const allDataProduct = createContext({ allDataProduct: [] });
 const useDataProduct = () => useContext(allDataProduct);
 function Context({ children }) {
+  const [searchActive, setSearchActive] = useState(false);
   const [link, setLink] = useState([]);
   const [active, setActive] = useState("All_Products");
   const [filterProduct, setFilterProduct] = useState(joinAllArrayProduct);
@@ -518,6 +519,8 @@ function Context({ children }) {
     <allDataProduct.Provider
       value={{
         joinAllArrayProduct,
+        searchActive,
+        setSearchActive,
         handleLink,
         link,
         filterProduct,

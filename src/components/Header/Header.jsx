@@ -2,7 +2,7 @@ import ChildHeader from "./ChildHeader";
 import "./header.css";
 import "../../App.css";
 import SearchProduct from "../../ProductPage/SearchProduct";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDataProduct } from "../../Context";
 import { useNavigate } from "react-router-dom";
 import fast_mart from "../../assets/FAST MART.png";
@@ -15,10 +15,29 @@ const dataHeader = [
 function Header({ openCalendar }) {
   const navigator = useNavigate();
   const [showHidden, setShowHidden] = useState(false);
-  const [searchActive, setSearchActive] = useState(false);
-
-  const { counterBag, setShowOverlyBG, setDropItem, setHidden, isLogin } =
+  const { counterBag, setShowOverlyBG, setDropItem, setHidden, isLogin,searchActive, setSearchActive } =
     useDataProduct();
+  const [isHeader, setIsHeader] = useState(false);
+  useEffect(() => {
+    let prevScrollPos = window.pageYOffset;
+    const handleScroll = () => {
+      let currentScrollPos = window.pageYOffset;
+      if (prevScrollPos > currentScrollPos) {
+        setIsHeader(false);
+      } else {
+        setIsHeader(true);
+      }
+      prevScrollPos = currentScrollPos;
+      console.log(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isHeader]);
+
   function handleAccountLogin() {
     if (isLogin) {
       setHidden(false);
@@ -30,66 +49,67 @@ function Header({ openCalendar }) {
   }
   return (
     <>
-      <div className="container_header">
-        <div className="bigScrenn">
-          <i
-            className="fa-solid fa-bars"
-            onClick={() => {
-              setShowHidden(true);
-            }}
-          ></i>
-          <img
-            className="logo_small_media"
-            src={fast_mart}
-            alt="FAST MART LOGO"
-          />
-        </div>
-        <div className="logo_big_screen">
-          <img
-            className="logo"
-            src={fast_mart}
-            alt="FAST MART LOGO"
-            onClick={() => navigator("/")}
-          />
-        </div>
-        <div className="informInfo">
-          <i
-            className="fa-solid fa-magnifying-glass"
-            onClick={() => setSearchActive(true)}
-          ></i>
-          <i className="fas fa-calendar-alt" onClick={openCalendar}></i>
-          {isLogin ? (
+      <header>
+        <div className={`container_header ${isHeader ? "active" : ""}`}>
+          <div className="bigScrenn">
             <i
-              className="fa-solid fa-bag-shopping"
+              className="fa-solid fa-bars"
               onClick={() => {
-                setDropItem(true);
-                setShowOverlyBG(true);
+                setShowHidden(true);
               }}
-            >
-              <p className="count_number">{counterBag}</p>
-            </i>
-          ) : null}
-          <div className="accountLogin">
+            ></i>
+            <img
+              className="logo_small_media"
+              src={fast_mart}
+              alt="FAST MART LOGO"
+            />
+          </div>
+          <div className="logo_big_screen">
+            <img
+              className="logo"
+              src={fast_mart}
+              alt="FAST MART LOGO"
+              onClick={() => navigator("/")}
+            />
+          </div>
+          <div className="informInfo">
+            <i
+              className="fa-solid fa-magnifying-glass"
+              onClick={() => setSearchActive(true)}
+            ></i>
+            <i className="fas fa-calendar-alt" onClick={openCalendar}></i>
             {isLogin ? (
               <i
-                className={`fa-solid fa-face-smile `}
-                onClick={() => navigator("/account")}
-              ></i>
-            ) : (
-              <i
-                className={`fa-solid fa-circle-user `}
+                className="fa-solid fa-bag-shopping"
                 onClick={() => {
-                  handleAccountLogin();
+                  setDropItem(true);
+                  setShowOverlyBG(true);
                 }}
-              ></i>
-            )}
+              >
+                <p className="count_number">{counterBag}</p>
+              </i>
+            ) : null}
+            <div className="accountLogin">
+              {isLogin ? (
+                <i
+                  className={`fa-solid fa-face-smile `}
+                  onClick={() => navigator("/account")}
+                ></i>
+              ) : (
+                <i
+                  className={`fa-solid fa-circle-user `}
+                  onClick={() => {
+                    handleAccountLogin();
+                  }}
+                ></i>
+              )}
+            </div>
+            <SearchProduct
+             
+            />
           </div>
-          <SearchProduct
-            searchActive={searchActive}
-            setSearchActive={setSearchActive}
-          />
         </div>
-      </div>
+      </header>
       <header className={`container-header ${showHidden ? "open" : ""}`}>
         <div className="child_custom_x" onClick={() => setShowHidden(false)}>
           <span className="custom_x"></span>

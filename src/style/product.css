@@ -4,6 +4,7 @@
   align-items: center;
   overflow: hidden;
   width: 100%;
+  margin-top: 7rem;
 }
 .Container_Links_product .child_links {
   overflow-x: auto;
@@ -242,7 +243,7 @@
   transition: all 0.3s ease-in-out;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(5rem);
+  transform: translateY(1rem);
 }
 .BgOverlay.active {
   pointer-events: all;

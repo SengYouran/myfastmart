@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useDataProduct } from "../Context";
 import { Link, useNavigate } from "react-router-dom";
-function SearchProduct({ searchActive, setSearchActive }) {
-  const { joinAllArrayProduct, setFilterProduct, setActive } = useDataProduct();
+function SearchProduct() {
+  const {
+    joinAllArrayProduct,
+    setFilterProduct,
+    setActive,
+    searchActive,
+    setSearchActive,
+  } = useDataProduct();
   const [valueSearch, setValueSearch] = useState("");
   const [filterValueProduct, setFilterValueProduct] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const focusSearch = useRef(null);
   const navigate = useNavigate();
   useEffect(() => {
@@ -31,10 +36,9 @@ function SearchProduct({ searchActive, setSearchActive }) {
   }
   function filterSearching() {
     const valueProduct = valueSearch.toLowerCase();
-    setIsLoading(true);
+
     if (valueProduct === "") {
       setTimeout(() => {
-        setIsLoading(false);
         setFilterValueProduct([]); // don't show any product
       }, 300);
       return;
@@ -43,7 +47,7 @@ function SearchProduct({ searchActive, setSearchActive }) {
       const filterValue = joinAllArrayProduct.filter((filter) =>
         filter.product_name.toLowerCase().includes(valueProduct)
       );
-      setIsLoading(false);
+     
       setFilterValueProduct(filterValue);
     }, 300);
   }
@@ -57,7 +61,8 @@ function SearchProduct({ searchActive, setSearchActive }) {
         <div className={`container_search `}>
           <input
             ref={focusSearch}
-            type="search" name="search"
+            type="search"
+            name="search"
             className="search"
             placeholder="What are you searching for?"
             onChange={Keyup}
