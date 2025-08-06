@@ -52,14 +52,14 @@
   border-radius: 2rem;
   padding: 1rem;
 }
-.fa-bookmark {
+.container_product .child_product .fa-bookmark {
   color: #4caf50;
   font-size: 1.8rem;
   position: relative;
   z-index: 1;
   cursor: pointer;
 }
-.fa-bookmark.active {
+.container_product .child_product .fa-bookmark.active {
   color: #ef0505;
 }
 .container_product .child_product .parent_product {
