@@ -1,5 +1,5 @@
-header{
-position: fixed;
+header {
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 99999;
@@ -164,6 +164,10 @@ position: fixed;
   }
   .bigScrenn .logo_small_media {
     margin-left: 1rem;
+  }
+  .container_header {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 }
 .child_custom_x {
