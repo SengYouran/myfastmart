@@ -159,15 +159,15 @@ header {
   }
 }
 @media screen and (max-width: 767px) {
+  .container_header {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
   .bigScrenn .logo_small_media {
     opacity: 1 !important;
   }
   .bigScrenn .logo_small_media {
     margin-left: 1rem;
-  }
-  .container_header {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
   }
 }
 .child_custom_x {
