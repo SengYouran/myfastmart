@@ -432,7 +432,7 @@
   display: none; /* Chrome, Safari */
 }
 .container_product_milk .child_top_milk {
-  border: .1rem solid #000;
+  border: 0.1rem solid #000;
   border-radius: 1rem;
   padding: 1rem;
   flex: 0 0 15.6%; /* មិនអោយវាខូច width ខ្លួន */
@@ -530,7 +530,6 @@
   }
   .container_Dis_Review .child_review {
     width: 100%;
-    margin-left: 2rem;
   }
   .container_product_milk .child_top_milk {
     flex: 0 0 31.9%;
