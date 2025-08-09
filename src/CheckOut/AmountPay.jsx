@@ -51,10 +51,7 @@ function AmountPay({ money }) {
       hour12: true,
     });
 
-    if (!selectBank) {
-      alert("សូមជ្រើសរើសធនាគារ មុនពេលធ្វើបង់ប្រាក់");
-      return;
-    }
+    if (!selectBank) return;
 
     const userIndex = createAccount.findIndex(
       (check) => check.id === currentAccount.id
@@ -116,6 +113,9 @@ function AmountPay({ money }) {
           USD $1.25
         </p>
       </div>
+      <div className={`alertError ${!selectBank ? "active" : ""}`}>
+        <h2 className="hasError">Has a error!</h2>
+      </div>
       <div className="checkout_place">
         <div className="container_checkouts_item">
           <button
@@ -123,6 +123,7 @@ function AmountPay({ money }) {
             onClick={() => {
               handleSavePoint();
               handleClearStoreBags();
+              if (!selectBank) return;
               navigate("/");
             }}
           >

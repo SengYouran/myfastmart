@@ -9,8 +9,9 @@ function RenderProduct({ data }) {
     handleCounterDash,
     handleBagCounter,
     handleCartItem,
-    wishlistActive, 
     handleUWishlist,
+    createAccount,
+    currentAccount,
   } = useDataProduct();
   const productPerPage = 24;
   const maxVisiblePages = 5;
@@ -68,7 +69,14 @@ function RenderProduct({ data }) {
 
     return buttons;
   }
-
+  const [wishlist, setWislist] = useState({});
+  useEffect(() => {
+    const getWishlist = createAccount.find(
+      (check) => check.id === currentAccount.id
+    );
+    const wishlist = getWishlist?.wishlistactive;
+    setWislist(wishlist);
+  }, [createAccount, currentAccount]);
   return (
     <React.Fragment>
       <div className="container_product">
@@ -80,7 +88,7 @@ function RenderProduct({ data }) {
             <div className="child_product" key={key} data-id={id}>
               <i
                 className={`fa-solid fa-bookmark ${
-                  wishlistActive?.[id] ? "active" : ""
+                  wishlist?.[id] ? "active" : ""
                 }`}
                 onClick={() => {
                   handleUWishlist(id);
@@ -113,7 +121,8 @@ function RenderProduct({ data }) {
                 <i
                   className="fa-solid fa-plus add_cart"
                   onClick={() => {
-                    handleBagCounter(); handleCartItem(id);
+                    handleBagCounter();
+                    handleCartItem(id);
                   }}
                 ></i>
               </div>

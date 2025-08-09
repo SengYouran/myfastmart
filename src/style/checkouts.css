@@ -145,7 +145,7 @@
 }
 .container_checkout_product .container_my_bags .child_my_bags {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
 }
 .container_checkout_product .container_my_bags .child_my_bags .info_my_bags {
   display: flex;
@@ -157,7 +157,7 @@
   .child_my_bags
   .info_my_bags
   .text_pro_my_bags {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 500;
 }
 .container_checkout_product
@@ -165,13 +165,13 @@
   .child_my_bags
   .info_my_bags
   .code_product {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 400;
 }
 
 .container_checkout_product .container_my_bags .child_my_bags .product_my_bags {
-  width: 10rem;
-  height: 10rem;
+  width: 9rem;
+  height: 9rem;
   margin-left: 1rem;
 }
 .container_checkout_product .container_price_my_bags {
@@ -180,7 +180,7 @@
   gap: 1rem;
 }
 .container_checkout_product .container_price_my_bags .price_my_bags {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #fa0000;
 }
 .container_checkout .child_bank_amountPay {
@@ -510,6 +510,28 @@
   font-weight: 500;
   color: #4caf50;
 }
+.alertError {
+  margin-top: -1.5rem;
+  display: none;
+}
+.alertError.active {
+  display: block;
+}
+.alertError .hasError {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fa0000;
+  animation: updown 1s linear infinite;
+}
+@keyframes updown {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(.5rem)
+  }
+}
 .conatiner_payment_checkout .checkout_place {
   display: flex;
   justify-content: space-between;
@@ -517,32 +539,33 @@
   gap: 1rem;
 }
 .conatiner_payment_checkout .checkout_place .container_checkouts_item {
-  background-color: #4caf50;
-  width: 60%;
+  width: 100%;
   padding: 1rem 0;
+  background-color: #4caf50;
 }
 .conatiner_payment_checkout
-.checkout_place
-.container_checkouts_item
-.checkouts_item {
-  font-size: 1.5rem;
+  .checkout_place
+  .container_checkouts_item
+  .checkouts_item {
+  font-size: 1.3rem;
   color: #fff;
   font-weight: 600;
   text-align: center;
   display: block;
   width: 100%;
   background-color: #4caf50;
+  padding: 0.19rem 0;
   outline: none;
   border: none;
   cursor: pointer;
 }
 .container_shopping_more {
   background-color: #4caf50;
-  width: 40%;
+  width: 100%;
   padding: 1rem 0;
 }
 .container_shopping_more .shopping_more {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #fff;
   font-weight: 600;
   text-align: center;
