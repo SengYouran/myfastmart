@@ -15,8 +15,15 @@ const dataHeader = [
 function Header({ openCalendar }) {
   const navigator = useNavigate();
   const [showHidden, setShowHidden] = useState(false);
-  const { counterBag, setShowOverlyBG, setDropItem, setHidden, isLogin,searchActive, setSearchActive } =
-    useDataProduct();
+  const {
+    counterBag,
+    setShowOverlyBG,
+    setDropItem,
+    setHidden,
+    isLogin,
+    searchActive,
+    setSearchActive,
+  } = useDataProduct();
   const [isHeader, setIsHeader] = useState(false);
   useEffect(() => {
     let prevScrollPos = window.pageYOffset;
@@ -28,7 +35,6 @@ function Header({ openCalendar }) {
         setIsHeader(true);
       }
       prevScrollPos = currentScrollPos;
-      console.log(currentScrollPos);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -104,9 +110,7 @@ function Header({ openCalendar }) {
                 ></i>
               )}
             </div>
-            <SearchProduct
-             
-            />
+            <SearchProduct />
           </div>
         </div>
       </header>

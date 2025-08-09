@@ -21,23 +21,38 @@ function Dashboard() {
   const sliderRef = useRef(null);
   const firstImgRef = useRef(null);
   const intervalRef = useRef(null);
+
+  const sliderCAT = useRef(null);
+  const imgCAT = useRef(null);
+  const intervalCAT = useRef(null);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [rotateIn, setRotateIn] = useState(true);
+
   useEffect(() => {
-    handleScroll();
-    handleRotateIn();
+    const cleanupCategory = handleCategoryAutoScroll();
+    const cleanupScroll = handleScroll();
+    const cleanupRotate = handleRotateIn();
+
+    return () => {
+      cleanupScroll();
+      cleanupRotate();
+      cleanupCategory();
+    };
   }, []);
 
   function handleRotateIn() {
     const intervalID = setInterval(() => {
       setRotateIn(false);
       setTimeout(() => {
-        setCurrentIndex((prevenID) => (prevenID + 1) % bannerImage.length);
+        setCurrentIndex((prevID) => (prevID + 1) % bannerImage.length);
         setRotateIn(true);
       }, 100);
     }, 5000);
+
     return () => clearInterval(intervalID);
   }
+
   function handleScroll() {
     const slider = sliderRef.current;
     const img = firstImgRef.current;
@@ -48,35 +63,27 @@ function Dashboard() {
     const autoScroll = (distance, maxScroll, viewWidth) => {
       if (scrollAmount < maxScroll - viewWidth) {
         scrollAmount += distance;
-        slider.scrollTo({
-          left: scrollAmount,
-          behavior: "smooth",
-        });
+        slider.scrollTo({ left: scrollAmount, behavior: "smooth" });
       } else {
         scrollAmount = 0;
         slider.scrollTo({ left: 0, behavior: "smooth" });
       }
     };
 
-    const handleResize = () => {
+    function handleResize() {
       clearInterval(intervalRef.current);
-
       if (!img || !slider) return;
 
       const maxScroll = slider.scrollWidth - img.clientWidth;
       const viewWidth = slider.clientWidth;
-      let imgWidth = img.clientWidth;
-      let gap = 10;
-
-      if (window.innerWidth <= 600) gap = 9;
-      else if (window.innerWidth >= 1024) gap = 11;
-
-      const distance = imgWidth + gap;
+      const gap =
+        window.innerWidth <= 600 ? 9 : window.innerWidth >= 1024 ? 11 : 10;
+      const distance = img.clientWidth + gap;
 
       intervalRef.current = setInterval(() => {
         autoScroll(distance, maxScroll, viewWidth);
       }, scrollInterval);
-    };
+    }
 
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -86,19 +93,56 @@ function Dashboard() {
       window.removeEventListener("resize", handleResize);
     };
   }
+
+  function handleCategoryAutoScroll() {
+    const slider = sliderCAT.current;
+    const img = imgCAT.current;
+
+    let numberTotalScroll = 0;
+    const intervalID = 3000;
+
+    const autoScrollCAT = (distance, maxScroll, viewWidth) => {
+      console.log(distance);
+      if (numberTotalScroll < maxScroll - viewWidth) {
+        numberTotalScroll += distance;
+        slider.scrollTo({ left: numberTotalScroll, behavior: "smooth" });
+      } else {
+        numberTotalScroll = 0;
+        slider.scrollTo({ left: 0, behavior: "smooth" });
+      }
+    };
+
+    function handleSize() {
+      clearInterval(intervalCAT.current);
+      if (!slider || !img) return;
+
+      const maxScroll = slider.scrollWidth - img.clientWidth;
+      const viewWidth = slider.clientWidth;
+      const gap =
+        window.innerWidth <= 600 ? 9 : window.innerWidth >= 1024 ? 11 : 10;
+      const distance = img.clientWidth + gap;
+
+      intervalCAT.current = setInterval(() => {
+        autoScrollCAT(distance, maxScroll, viewWidth);
+      }, intervalID);
+    }
+
+    handleSize();
+    window.addEventListener("resize", handleSize);
+
+    return () => {
+      clearInterval(intervalCAT.current);
+      window.removeEventListener("resize", handleSize);
+    };
+  }
+
   return (
     <div className="containerMain">
       <header className="Dashboard"></header>
       <BannerProduct />
 
       <section id="WelcomeBanner">
-        <div
-          className={`dashboard `}
-          onClick={() => {
-            setShowWelcome(false);
-            console.log("clic");
-          }}
-        >
+        <div className="dashboard">
           <WelcomBanner
             currentIndex={currentIndex}
             rotateIn={rotateIn}
@@ -111,13 +155,19 @@ function Dashboard() {
         <div className="border"></div>
         <div className="category">
           <h2 className="txtCty">Categories</h2>
-          <div className="type_products">
-            {Categories_product.map(({ id, image, textName }) => (
-              <Category key={id} image={image} textName={textName} />
+          <div className="type_products" ref={sliderCAT}>
+            {Categories_product.map(({ id, image, textName }, index) => (
+              <Category
+                key={id}
+                image={image}
+                textName={textName}
+                imgRef={index === 0 ? imgCAT : null}
+              />
             ))}
           </div>
         </div>
       </section>
+
       <section id="Product_Popular">
         <div className="category">
           <h2 className="txtCty">Popular Product</h2>

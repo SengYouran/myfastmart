@@ -9,14 +9,7 @@ function RenderProduct({ data }) {
     handleCounterDash,
     handleBagCounter,
     handleCartItem,
-    createAccount,
-    currentAccount,
-    isLogin,
-    setAlertLogin,
-    setShowOverlyBG,
-    wishlistActive,
-    setWishlistActive,
-    setUpdateWishlist,
+    wishlistActive, 
     handleUWishlist,
   } = useDataProduct();
   const productPerPage = 24;

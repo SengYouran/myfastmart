@@ -790,6 +790,7 @@ i {
   .bag_txt_pro {
   display: flex;
   align-items: center;
+  gap: 1.5rem;
   padding: 1rem 0;
 }
 .container_detial_product

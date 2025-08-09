@@ -55,7 +55,7 @@
 .container_product .child_product .fa-bookmark {
   color: #4caf50;
   font-size: 1.8rem;
-  position: relative;
+  position: absolute;
   z-index: 1;
   cursor: pointer;
 }

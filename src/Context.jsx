@@ -21,7 +21,6 @@ import {
   all_vegetable,
 } from "./data/product";
 import { dataTopMilk } from "./data/top_milk";
-import { jsx } from "react/jsx-runtime";
 const joinAllArrayProduct = [
   ...all_Fruit,
   ...all_Shampoo,
@@ -414,8 +413,6 @@ function Context({ children }) {
       setCreateAccount(updateAccount);
     }
   }, [wishlistActive, updatedWishlist]);
-  console.log(counters);
-  console.log(counterBag);
   function handleUWishlist(id) {
     if (!isLogin) {
       setShowOverlyBG(true);

@@ -1,4 +1,6 @@
 import Fruits from "../assets/Categories/Fruits.png";
+import Kitchen_Equipment from "../assets/Kitchen Equipment.png";
+import Shampoo from "../assets/Shampoo.png";
 import Breads from "../assets/Categories/Bread.png";
 import Fishs from "../assets/Categories/Fishs.png";
 import Vegetables from "../assets/Categories/Vegetable.png";
@@ -19,6 +21,8 @@ import Dis_Meats from "../assets/Discount/Meats.jpg";
 import Dis_Jams from "../assets/Discount/Jams.jpg";
 import Review_Profile from "../assets/Categories/Review_Profile.png";
 import Julina_Profile from "../assets/Categories/Julina.webp";
+import Skincare from "../assets/Skincare.png";
+import Coffee from "../assets/Coffee.png";
 import Food1 from "../assets/Food1.png";
 import Food2 from "../assets/Food2.png";
 import Food3 from "../assets/Food3.png";
@@ -30,6 +34,11 @@ const Categories_product = [
     id: "C1",
     image: Fruits,
     textName: "Fruits",
+  },
+  {
+    id: "C12",
+    image: Shampoo,
+    textName: "Shampoo",
   },
   {
     id: "C2",
@@ -52,6 +61,11 @@ const Categories_product = [
     textName: "Meats",
   },
   {
+    id: "C13",
+    image: Skincare,
+    textName: "Skin care",
+  },
+  {
     id: "C6",
     image: Sea_Foods,
     textName: "Sea Foods",
@@ -72,9 +86,19 @@ const Categories_product = [
     textName: "Juices",
   },
   {
+    id: "C14",
+    image: Coffee,
+    textName: "Coffee",
+  },
+  {
     id: "C10",
     image: Jams,
     textName: "Jams",
+  },
+  {
+    id: "C11",
+    image: Kitchen_Equipment,
+    textName: "Kitchen Equipment",
   },
 ];
 const Popular_Product = [
