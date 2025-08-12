@@ -10,7 +10,6 @@ function ChildOrderProduct({ moneyKhmer, orderProduct, card }) {
   const {
     showOverlyBG,
     setShowOverlyBG,
-    setDropItem,
     counters,
     handleCartItem,
     handleCounterDash,

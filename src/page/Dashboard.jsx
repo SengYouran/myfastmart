@@ -102,7 +102,7 @@ function Dashboard() {
     const intervalID = 3000;
 
     const autoScrollCAT = (distance, maxScroll, viewWidth) => {
-      console.log(distance);
+      
       if (numberTotalScroll < maxScroll - viewWidth) {
         numberTotalScroll += distance;
         slider.scrollTo({ left: numberTotalScroll, behavior: "smooth" });

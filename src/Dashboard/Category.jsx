@@ -1,5 +1,5 @@
 function Category({ id, image, textName, imgRef }) {
-  console.log(imgRef);
+ 
   return (
     <div className="product" data-id={id}>
       <img src={image} alt="Picture Categories" ref={imgRef} />
