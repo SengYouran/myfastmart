@@ -30,39 +30,15 @@ const joinAllArrayProduct = [
   ...all_Meats,
 ];
 import { useRef } from "react"; // បន្ថែមលើគេ
-import useForm from "./custom_hook/useForm";
-import useProducts from "./custom_hook/useProducts";
 const allDataProduct = createContext({ allDataProduct: [] });
 const useDataProduct = () => useContext(allDataProduct);
 function Context({ children }) {
-  //useForm from custom hook
-  const {
-    hidden,
-    setHidden,
-    email,
-    setEmail,
-    phone,
-    setPhone,
-    password,
-    setPassword,
-    fullName,
-    setFullName,
-    gender,
-    setGender,
-    passwordLogin,
-    setPasswordLogin,
-    phoneLogin,
-    setPhoneLogin,
-    form,
-    setForm,
-    handleCreateAccount,
-    handleSelectProvince,
-    handleChange,
-    handleSave,
-  } = useForm();
-  //end useForm=============
+ 
   //========================================================
-
+  const [searchActive, setSearchActive] = useState(false);
+  const [link, setLink] = useState([]);
+  const [active, setActive] = useState("All_Products");
+  const [filterProduct, setFilterProduct] = useState(joinAllArrayProduct);
   const [dropItem, setDropItem] = useState(false);
   const [showOverlyBG, setShowOverlyBG] = useState(false);
   const [alertLogin, setAlertLogin] = useState(false);
@@ -149,7 +125,87 @@ function Context({ children }) {
     );
     window.localStorage.setItem("isLogin", JSON.stringify(isLogin));
   }, [counterBag, createAccount, currentAccount, isLogin, counters]);
+  const [hidden, setHidden] = useState(false); //form login or register
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [gender, setGender] = useState("");
+  const [passwordLogin, setPasswordLogin] = useState("");
+  const [phoneLogin, setPhoneLogin] = useState("");
+  const [form, setForm] = useState({
+    fullName: "",
+    phone: "",
+    address: "",
+    country: "Cambodia",
+    province: "",
+  });
+  function handleCreateAccount(customPassword) {
+    function generateUserId() {
+      let userId = createAccount.length + 1;
+      return userId.toString().padStart(4, "0");
+    }
 
+    const passwordToUse = customPassword || password;
+
+    if (
+      phone.trim() === "" ||
+      email.trim() === "" ||
+      fullName.trim() === "" ||
+      passwordToUse.trim() === ""
+    ) {
+      return;
+    }
+
+    const allInfo = {
+      id: generateUserId(),
+      fullname: fullName,
+      password: passwordToUse,
+      phone: phone,
+      email: email,
+      gender: gender,
+    };
+
+    setCreateAccount([allInfo, ...createAccount]);
+    setFullName("");
+    setPassword("");
+    setPhone("");
+    setEmail("");
+    setGender("");
+  }
+  const handleSelectProvince = (province) => {
+    setForm({ ...form, province });
+    setSelectProvince(false);
+  };
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+  function handleSave() {
+    if (!form.fullName || !form.phone || !form.address || !form.province) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    // update shippingAddress in createAccount
+    const userIndex = createAccount.findIndex(
+      (user) => user.id === currentAccount.id
+    );
+
+    if (userIndex !== -1) {
+      const updatedAccount = [...createAccount];
+      updatedAccount[userIndex] = {
+        ...updatedAccount[userIndex],
+        shippingAddress: { ...form },
+      };
+
+      setCreateAccount(updatedAccount);
+      setShippingAddress(form); // optional, if you want this value globally as well
+      setShowOverlyBG(false);
+      alert("Address updated successfully!");
+    } else {
+      alert("User not found.");
+    }
+  }
   function handleAddress() {
     const userIndex = createAccount.findIndex(
       (check) => check.id === currentAccount.id
@@ -359,33 +415,97 @@ function Context({ children }) {
       setCreateAccount(updateAccount);
     }
   }, [updateSpentPoint, currentAccount.id]);
+  function handleCartItem(id) {
+    if (!isLogin) {
+      setAlertLogin(true);
+      setShowOverlyBG(true);
+      return;
+    }
+    const product = joinAllArrayProduct.find((p) => p.id === id);
+    if (!product) return;
 
-  //useProduct from customer hook
-  const {
-    searchActive,
-    setSearchActive,
-    link,
-    setLink,
-    active,
-    setActive,
-    filterProduct,
-    setFilterProduct,
-    handleCartItem,
-    handleLink,
-    handleCounterPlus,
-    handleCounterDash,
-    handleBagCounter,
-  } = useProducts(
-    joinAllArrayProduct,
-    isLogin,
-    counters,
-    setCounters,
-    setCounterBag,
-    setCreateAccount,
-    setAlertLogin,
-    setShowOverlyBG
-  );
-  //end useProducts
+    const { product_image, product_name, product_price } = product;
+    const counterValue = counters[id] ?? 1;
+    const cut_$ = parseFloat(String(product_price).replace("$", ""));
+
+    if (counterValue <= 0) {
+      alert("Select counter");
+      return;
+    }
+
+    const userIndex = createAccount.findIndex(
+      (check) => check.id === currentAccount.id
+    );
+    if (userIndex !== -1) {
+      const updatedItem = {
+        id,
+        product_image,
+        product_name,
+        product_price,
+        counters: counterValue,
+        totalPrice: cut_$ * counterValue,
+      };
+
+      const updatedCreateAccount = [...createAccount];
+      const user = { ...updatedCreateAccount[userIndex] };
+      const oldCart = user.storeBags || [];
+
+      const existingIndex = oldCart.findIndex((item) => item.id === id);
+      let newCart;
+      if (existingIndex !== -1) {
+        newCart = [...oldCart];
+        newCart[existingIndex] = updatedItem;
+      } else {
+        newCart = [updatedItem, ...oldCart];
+      }
+
+      user.storeBags = newCart;
+
+      updatedCreateAccount[userIndex] = user;
+      setCreateAccount(updatedCreateAccount);
+    }
+  }
+  function handleLink(type) {
+    setActive(type);
+
+    const rederData =
+      type === "All_Products"
+        ? joinAllArrayProduct
+        : joinAllArrayProduct.filter(
+            (type_pro) => type_pro.product_type === type
+          );
+    setFilterProduct(rederData);
+  }
+  function handleCounterPlus(id) {
+    setCounters((prev) => ({
+      ...prev,
+      [id]: (prev[id] || 0) + 1,
+    }));
+  }
+
+  function handleCounterDash(id) {
+    setCounters((prev) => ({
+      ...prev,
+      [id]: Math.max((prev[id] || 0) - 1, 0),
+    }));
+  }
+  function handleBagCounter() {
+    if (!isLogin) {
+      setAlertLogin(true);
+      setShowOverlyBG(true);
+      return;
+    }
+
+    const total = Object.values(counters).reduce(
+      (sum, count) => sum + count,
+      0
+    );
+    setCounterBag(
+      (prev) =>
+        total +
+        Object.values(counterWishlist).reduce((sum, count) => sum + count, 0)
+    );
+  }
   return (
     <allDataProduct.Provider
       value={{
