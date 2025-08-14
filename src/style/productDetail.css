@@ -259,7 +259,7 @@
   overflow-y: auto;
   max-height: 50vh; /* ឧទាហរណ៍ */
   padding-right: 1rem;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 /* Scrollbar Container */
 .hero-products1 .child-product1 .text-about::-webkit-scrollbar {
@@ -289,6 +289,7 @@
   align-items: center;
   gap: 2rem;
   margin-top: 1rem;
+  position: relative;
 }
 .border_oder_bag {
   border: 0.1rem solid #4caf50;
@@ -332,6 +333,10 @@
   color: #525050;
   margin: 1rem 0;
 }
+.hero-products1 .child-product1 .text-about .child_text .qty {
+  cursor: pointer;
+  
+}
 .hero-products1 .child-product1 .text-about .child_text .qty .text-h3 {
   font-size: 1.5rem;
   color: #000;
@@ -344,6 +349,79 @@
   border: 0.1rem solid #d5d3d3;
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
+}
+.hero-products1 .child-product1 .text-about .child_text .moreCounter {
+  overflow-y: auto;
+  max-height: 18rem;
+  background-color: #fff;
+  box-shadow: 0 0 1rem #999;
+  width: 6rem;
+  position: absolute;
+  top: 0%;
+  display: none;
+}
+.hero-products1
+  .child-product1
+  .text-about
+  .child_text
+
+  .moreCounter.active {
+  display: block;
+}
+.hero-products1
+  .child-product1
+  .text-about
+  .child_text
+
+  .moreCounter::-webkit-scrollbar {
+  width: 1rem;
+}
+.hero-products1
+  .child-product1
+  .text-about
+  .child_text
+
+  .moreCounter::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 0.5rem;
+}
+
+/* Scrollbar Thumb (ដើមរបារ) */
+.hero-products1
+  .child-product1
+  .text-about
+  .child_text
+
+  .moreCounter::-webkit-scrollbar-thumb {
+  background: #4caf50;
+  border-radius: 0.5rem;
+}
+
+/* Scrollbar Thumb Hover */
+.hero-products1
+  .child-product1
+  .text-about
+  .child_text
+
+  .moreCounter::-webkit-scrollbar-thumb:hover {
+  background: #b93b68;
+}
+
+.hero-products1
+  .child-product1
+  .text-about
+  .child_text
+  
+  .moreCounter
+  .moreOption {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  text-align: center;
+  cursor: pointer;
+}
+.hero-products1 .child-product1 .moreCounter .moreOption:hover {
+  background-color: #eee;
 }
 .hero-products1 .child-product1 .text-about .child_text .price-checkout {
   display: flex;
