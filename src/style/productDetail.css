@@ -335,7 +335,6 @@
 }
 .hero-products1 .child-product1 .text-about .child_text .qty {
   cursor: pointer;
-  
 }
 .hero-products1 .child-product1 .text-about .child_text .qty .text-h3 {
   font-size: 1.5rem;
@@ -352,27 +351,22 @@
 }
 .hero-products1 .child-product1 .text-about .child_text .moreCounter {
   overflow-y: auto;
-  max-height: 18rem;
+  max-height: 18.8rem;
   background-color: #fff;
   box-shadow: 0 0 1rem #999;
   width: 6rem;
   position: absolute;
   top: 0%;
   display: none;
+  z-index: 2;
 }
-.hero-products1
-  .child-product1
-  .text-about
-  .child_text
-
-  .moreCounter.active {
+.hero-products1 .child-product1 .text-about .child_text .moreCounter.active {
   display: block;
 }
 .hero-products1
   .child-product1
   .text-about
   .child_text
-
   .moreCounter::-webkit-scrollbar {
   width: 1rem;
 }
@@ -380,7 +374,6 @@
   .child-product1
   .text-about
   .child_text
-
   .moreCounter::-webkit-scrollbar-track {
   background: #fff;
   border-radius: 0.5rem;
@@ -391,7 +384,6 @@
   .child-product1
   .text-about
   .child_text
-
   .moreCounter::-webkit-scrollbar-thumb {
   background: #4caf50;
   border-radius: 0.5rem;
@@ -402,7 +394,6 @@
   .child-product1
   .text-about
   .child_text
-
   .moreCounter::-webkit-scrollbar-thumb:hover {
   background: #b93b68;
 }
@@ -411,7 +402,6 @@
   .child-product1
   .text-about
   .child_text
-  
   .moreCounter
   .moreOption {
   font-size: 1.5rem;
@@ -426,6 +416,17 @@
 .hero-products1 .child-product1 .text-about .child_text .price-checkout {
   display: flex;
   justify-content: space-between;
+}
+.hero-products1 .child-product1 .bg_cart {
+  position: absolute;
+  inset: 0;
+  background: #eee;
+  opacity: 0;
+  z-index: -1;
+}
+.hero-products1 .child-product1 .bg_cart.active{
+  z-index: 1;
+  opacity: .5;
 }
 .hero-products1
   .child-product1

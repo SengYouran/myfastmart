@@ -75,10 +75,36 @@
   pointer-events: all;
   display: flex;
 }
-.container_form .container_login .container_phone,
-.form_password {
+.container_form .container_login .container_phone {
   width: 100%;
   max-width: 35rem;
+  position: relative;
+}
+.container_form .container_login .form_password {
+  width: 100%;
+  max-width: 35rem;
+  position: relative;
+}
+.container_form .container_login .form_password .fa-eye-slash {
+  position: absolute;
+  top: 55%;
+  right: 5%;
+ 
+  cursor: pointer;
+}
+.container_form .container_login .form_password .fa-eye-slash.active {
+  display: none;
+}
+.container_form .container_login .form_password .fa-eye {
+  position: absolute;
+  top: 55%;
+  right: 5%;
+
+  cursor: pointer;
+  display: none;
+}
+.container_form .container_login .form_password .fa-eye.active {
+  display: block;
 }
 .container_form .container_login .container_phone .telephone,
 .form_password .telephone {
@@ -310,6 +336,68 @@
 .container_form .container_register .password_regsiter.active {
   pointer-events: all;
   opacity: 1;
+}
+.container_form .container_register .password_regsiter .res_passd1,
+.res_passd2 {
+  position: relative;
+}
+.container_form
+  .container_register
+  .password_regsiter
+  .res_passd1
+  .fa-eye-slash {
+  position: absolute;
+  top: 45%;
+  right: 5%;
+ 
+  cursor: pointer;
+ 
+}
+.container_form
+  .container_register
+  .password_regsiter
+  .res_passd1
+  .fa-eye-slash.active {
+  display: none;
+}
+.container_form .container_register .password_regsiter .res_passd1 .fa-eye {
+  position: absolute;
+  top: 45%;
+  right: 5%;
+ 
+  cursor: pointer;
+  display: none;
+}
+.container_form .container_register .password_regsiter .res_passd1 .fa-eye.active {
+  display: block;
+}
+.container_form
+  .container_register
+  .password_regsiter
+  .res_passd2
+  .fa-eye-slash {
+  position: absolute;
+  top: 45%;
+  right: 5%;
+  cursor: pointer;
+}
+.container_form
+  .container_register
+  .password_regsiter
+  .res_passd2
+  .fa-eye-slash.active {
+  display: none;
+}
+.container_form .container_register .password_regsiter .res_passd2 .fa-eye {
+  position: absolute;
+  top: 45%;
+  right: 5%;
+ 
+  cursor: pointer;
+  display: none;
+}
+.container_form .container_register .password_regsiter .res_passd2 .fa-eye.active {
+  display: block;
 }
 .container_form .container_register .password_regsiter .passd {
   width: 100%;

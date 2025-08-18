@@ -193,6 +193,12 @@ function Cart({ setShowOverlyBG }) {
                           );
                         })}
                       </div>
+                      <div
+                        className={`bg_cart ${
+                          showCount === id ? "active" : ""
+                        }`}
+                        onClick={() => setShowCount(null)}
+                      ></div>
                       <div className="price-checkout">
                         <p className="after-dis">After discount:</p>
                         <p className="curr-price">USD {product_price}</p>

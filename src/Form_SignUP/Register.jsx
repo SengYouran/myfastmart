@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import fackbook from "../assets/facebook logo.svg";
 import google from "../assets/google logo.png";
 import { useDataProduct } from "../Context";
@@ -18,6 +18,8 @@ function Register({ setActive, active, setHiddenBG }) {
   } = useDataProduct();
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
+  const [showPassd1,setShowPassd1] = useState(false)
+  const [showPassd2,setShowPassd2] = useState(false)
   function handlePassword() {
     if (password1 === password2 && password1.length >= 6) {
       setActivePassd(false);
@@ -131,22 +133,42 @@ function Register({ setActive, active, setHiddenBG }) {
         Already have an account? Login
       </h2>
       <div className={`password_regsiter ${activePassd ? "active" : " "}`}>
-        <input
-          type="password"
+        <span className="res_passd1">
+          <input
+          type={`${showPassd1 ? "text" : "password"}`}
           className="passd"
           name="passwordRegister" id="passd1"
           placeholder="Password"
           value={password1}
           onChange={(e) => setPassword1(e.target.value)}
         />
-        <input
-          type="password"
+        <i
+          class={` fa-solid fa-eye-slash ${showPassd1 ? "active" : ""}`}
+          onClick={() => setShowPassd1(true)}
+        ></i>
+        <i
+          class={`fa-solid fa-eye ${showPassd1 ? "active" : ""}`}
+          onClick={() => setShowPassd1(false)}
+        ></i>
+        </span>
+        <span className="res_passd2">
+          <input
+          type={`${showPassd2 ? "text" : "password"}`}
           className="passd"
           name="comfirmPasswordRegister" id="passd2"
           placeholder="Comfirm Password"
           value={password2}
           onChange={(e) => setPassword2(e.target.value)}
         />
+        <i
+          class={` fa-solid fa-eye-slash ${showPassd2 ? "active" : ""}`}
+          onClick={() => setShowPassd2(true)}
+        ></i>
+        <i
+          class={`fa-solid fa-eye ${showPassd2 ? "active" : ""}`}
+          onClick={() => setShowPassd2(false)}
+        ></i>
+        </span>
         <h2
           className="comfirm"
           onClick={() => {

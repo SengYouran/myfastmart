@@ -4,6 +4,7 @@ import google from "../assets/google logo.png";
 import { useDataProduct } from "../Context";
 function Login({ setActive, active }) {
   const [incorrect, setIncorrect] = useState(false);
+  const [showPassd, setShowPassd] = useState(false);
   const {
     setCurrentAccount,
     createAccount,
@@ -43,7 +44,8 @@ function Login({ setActive, active }) {
         <input
           type="tel"
           inputMode="numeric"
-          name="telLogin" id="tel_login"
+          name="telLogin"
+          id="tel_login"
           className="phone"
           placeholder="Enter Telephone"
           value={phoneLogin}
@@ -53,13 +55,22 @@ function Login({ setActive, active }) {
       <div className="form_password">
         <h2 className="telephone">Password*</h2>
         <input
-          type="password"
+          type={`${showPassd ? "text" : "password"}`}
           className="password"
-          name="passwordLogin" id="passd_login"
+          name="passwordLogin"
+          id="passd_login"
           placeholder="Enter Password"
           value={passwordLogin}
           onChange={(e) => setPasswordLogin(e.target.value.trim())}
         />
+        <i
+          class={` fa-solid fa-eye-slash ${showPassd ? "active" : ""}`}
+          onClick={() => setShowPassd(true)}
+        ></i>
+        <i
+          class={`fa-solid fa-eye ${showPassd ? "active" : ""}`}
+          onClick={() => setShowPassd(false)}
+        ></i>
       </div>
       <p className={`incorrect ${incorrect ? "active" : ""}`}>
         Incorrect Tel or Password!
