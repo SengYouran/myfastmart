@@ -62,8 +62,8 @@ function ChildOrderProduct({ moneyKhmer, orderProduct, card }) {
               className="text_add"
               onClick={() => {
                 setShowOverlyBG(true);
-                handleCartItem(id);
                 handleBagCounter();
+                handleCartItem(id);
                 if (!isLogin) return;
                 setShowBag(true);
               }}

@@ -11,15 +11,14 @@ function Register({ setActive, active, setHiddenBG }) {
     setPhone,
     fullName,
     setFullName,
-    setPassword,
     handleCreateAccount,
     gender,
     setGender,
   } = useDataProduct();
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
-  const [showPassd1,setShowPassd1] = useState(false)
-  const [showPassd2,setShowPassd2] = useState(false)
+  const [showPassd1, setShowPassd1] = useState(false);
+  const [showPassd2, setShowPassd2] = useState(false);
   function handlePassword() {
     if (password1 === password2 && password1.length >= 6) {
       setActivePassd(false);
@@ -70,7 +69,8 @@ function Register({ setActive, active, setHiddenBG }) {
         <h2 className="name">Full Name</h2>
         <input
           type="text"
-          name="usernameRegister" id="usernameRegister"
+          name="usernameRegister"
+          id="usernameRegister"
           className="username"
           placeholder="Enter Your Full Name"
           value={fullName}
@@ -82,7 +82,8 @@ function Register({ setActive, active, setHiddenBG }) {
         <input
           type="tel"
           inputMode="numeric"
-          name="telRegister" id="telRegister"
+          name="telRegister"
+          id="telRegister"
           className="phone"
           placeholder="Enter Telephone"
           value={phone}
@@ -94,16 +95,24 @@ function Register({ setActive, active, setHiddenBG }) {
         <input
           type="text"
           className="phone"
-          name="phoneRegister" id="phoneRegister"
+          name="phoneRegister"
+          id="phoneRegister"
           placeholder="Enter Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
       </div>
       <button
         className="btn_register"
         onClick={(e) => {
           e.preventDefault(); // បញ្ឈប់ default behavior
+          if (
+            fullName.trim() === "" ||
+            phone.trim() === "" ||
+            email.trim() === ""
+          )
+            return;
           setActivePassd(true);
           setHiddenBG(true);
         }}
@@ -135,39 +144,41 @@ function Register({ setActive, active, setHiddenBG }) {
       <div className={`password_regsiter ${activePassd ? "active" : " "}`}>
         <span className="res_passd1">
           <input
-          type={`${showPassd1 ? "text" : "password"}`}
-          className="passd"
-          name="passwordRegister" id="passd1"
-          placeholder="Password"
-          value={password1}
-          onChange={(e) => setPassword1(e.target.value)}
-        />
-        <i
-          class={` fa-solid fa-eye-slash ${showPassd1 ? "active" : ""}`}
-          onClick={() => setShowPassd1(true)}
-        ></i>
-        <i
-          class={`fa-solid fa-eye ${showPassd1 ? "active" : ""}`}
-          onClick={() => setShowPassd1(false)}
-        ></i>
+            type={`${showPassd1 ? "text" : "password"}`}
+            className="passd"
+            name="passwordRegister"
+            id="passd1"
+            placeholder="Password"
+            value={password1}
+            onChange={(e) => setPassword1(e.target.value)}
+          />
+          <i
+            class={` fa-solid fa-eye-slash ${showPassd1 ? "active" : ""}`}
+            onClick={() => setShowPassd1(true)}
+          ></i>
+          <i
+            class={`fa-solid fa-eye ${showPassd1 ? "active" : ""}`}
+            onClick={() => setShowPassd1(false)}
+          ></i>
         </span>
         <span className="res_passd2">
           <input
-          type={`${showPassd2 ? "text" : "password"}`}
-          className="passd"
-          name="comfirmPasswordRegister" id="passd2"
-          placeholder="Comfirm Password"
-          value={password2}
-          onChange={(e) => setPassword2(e.target.value)}
-        />
-        <i
-          class={` fa-solid fa-eye-slash ${showPassd2 ? "active" : ""}`}
-          onClick={() => setShowPassd2(true)}
-        ></i>
-        <i
-          class={`fa-solid fa-eye ${showPassd2 ? "active" : ""}`}
-          onClick={() => setShowPassd2(false)}
-        ></i>
+            type={`${showPassd2 ? "text" : "password"}`}
+            className="passd"
+            name="comfirmPasswordRegister"
+            id="passd2"
+            placeholder="Comfirm Password"
+            value={password2}
+            onChange={(e) => setPassword2(e.target.value)}
+          />
+          <i
+            class={` fa-solid fa-eye-slash ${showPassd2 ? "active" : ""}`}
+            onClick={() => setShowPassd2(true)}
+          ></i>
+          <i
+            class={`fa-solid fa-eye ${showPassd2 ? "active" : ""}`}
+            onClick={() => setShowPassd2(false)}
+          ></i>
         </span>
         <h2
           className="comfirm"

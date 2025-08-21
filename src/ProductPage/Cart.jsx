@@ -6,16 +6,18 @@ function Cart({ setShowOverlyBG }) {
   const {
     dropItem,
     setDropItem,
-    counterBag,
-    setCounterBag,
     setCounters,
     createAccount,
     setCreateAccount,
     currentAccount,
+    setCurrentAccount,
     setKhmerMoney,
     khmerMoney,
     amountPayment,
     setAmountPayment,
+    counterWishlist,
+    setCountersWishlist,
+    setUpdateCounter,
   } = useDataProduct();
   const [showCount, setShowCount] = useState(null);
   const price_delivery = 1.25;
@@ -27,30 +29,35 @@ function Cart({ setShowOverlyBG }) {
     handleAmountPayment();
   }, [renderItemBag]);
   function handleDeleteCart(id) {
-    const updateCounterBag = renderItemBag.find((check) => check.id === id);
-
-    if (updateCounterBag && typeof setCounterBag === "function") {
-      const newCounterUpdate = Math.max(
-        counterBag - updateCounterBag.counters,
-        0
-      ); // ✅ No negative
-      setCounterBag(newCounterUpdate);
-    }
-
-    const updatedCart = renderItemBag.filter((check) => check.id !== id);
-    // ✅ Update storeBags inside the user
-    const updatedCreateAccount = [...createAccount];
-    const userIndex = updatedCreateAccount.findIndex(
+    const userIndex = createAccount.findIndex(
       (acc) => acc.id === currentAccount.id
     );
-    if (userIndex !== -1) {
-      const updatedUser = { ...updatedCreateAccount[userIndex] };
-      updatedUser.storeBags = updatedCart;
-      updatedCreateAccount[userIndex] = updatedUser;
-      setCreateAccount(updatedCreateAccount);
-    }
 
-    // ✅ Remove product counter from counters object
+    if (userIndex === -1) return;
+    const newCounterWishlist = Object.fromEntries(
+      Object.entries(counterWishlist).filter(([key, value]) => key != id)
+    );
+    setCountersWishlist(newCounterWishlist);
+    // Remove item with id from storeBags
+    const updatedCart = renderItemBag.filter((item) => item.id !== id);
+
+    // Recalculate total counters after deletion
+    const newCounterBag = updatedCart.reduce(
+      (sum, item) => sum + (item.counters || 0),
+      0
+    );
+
+    // Update createAccount with new storeBags and counterBag
+    const updatedCreateAccount = [...createAccount];
+    const updatedUser = { ...updatedCreateAccount[userIndex] };
+    updatedUser.storeBags = updatedCart;
+    updatedUser.counterBag = newCounterBag;
+    updatedCreateAccount[userIndex] = updatedUser;
+
+    setCreateAccount(updatedCreateAccount);
+    setCurrentAccount(updatedUser);
+
+    // Remove product counter from counters state
     setCounters((prev) => {
       const newCounters = { ...prev };
       delete newCounters[id];
@@ -84,12 +91,20 @@ function Cart({ setShowOverlyBG }) {
     setKhmerMoney(khmerMoneyFormatted);
     setAmountPayment(formattedTotal.toFixed(2));
   }
+
   const moreCounter = Array.from({ length: 100 }, (_, i) => i + 1);
   function resetNewCounter(newCounter, id) {
     const oldItem = renderItemBag.find((check) => check.id === id);
     const oldCount = oldItem?.counters || 0;
-    const newTotal = counterBag - oldCount + newCounter;
-    setCounterBag(newTotal);
+    const userIndexs = createAccount.findIndex(
+      (check) => check.id === currentAccount.id
+    );
+    // Get correct user object
+    const userObj = createAccount[userIndexs];
+    const counterBags = userObj?.counterBag || 0;
+
+    const newTotal = counterBags - oldCount + newCounter;
+    setUpdateCounter(newTotal);
     setCounters((prev) => ({
       ...prev,
       [id]: newCounter,
@@ -147,8 +162,7 @@ function Cart({ setShowOverlyBG }) {
                   <div
                     className="child_text"
                     onClick={(e) => {
-                      e.stopProPagation();
-                      setShowCount(null);
+                      e.stopPropagation();
                     }}
                   >
                     <div className="products1">

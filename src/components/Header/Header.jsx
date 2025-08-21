@@ -16,15 +16,17 @@ function Header({ openCalendar }) {
   const navigator = useNavigate();
   const [showHidden, setShowHidden] = useState(false);
   const {
-    counterBag,
     setShowOverlyBG,
     setDropItem,
     setHidden,
     isLogin,
     searchActive,
     setSearchActive,
+    createAccount,
+    currentAccount,
   } = useDataProduct();
   const [isHeader, setIsHeader] = useState(false);
+  const [newCounter, setNewCounter] = useState(0);
   useEffect(() => {
     let prevScrollPos = window.pageYOffset;
     const handleScroll = () => {
@@ -53,6 +55,25 @@ function Header({ openCalendar }) {
       setShowOverlyBG(true);
     }
   }
+
+  useEffect(() => {
+  // បើមិន login ឬ currentAccount មិនមាន ID កុំដំណើរការ
+  if (!isLogin || !currentAccount?.id) {
+    setNewCounter(0);
+    return;
+  }
+
+  // រក user ត្រឹមត្រូវ
+  const counterUser = createAccount.find(
+    (check) => check.id === currentAccount.id
+  );
+
+  const counterBags = counterUser?.counterBag ?? 0;
+
+
+  setNewCounter(counterBags);
+}, [createAccount, currentAccount?.id, isLogin]);
+
   return (
     <>
       <header>
@@ -92,7 +113,7 @@ function Header({ openCalendar }) {
                   setShowOverlyBG(true);
                 }}
               >
-                <p className="count_number">{counterBag}</p>
+                <p className="count_number">{newCounter}</p>
               </i>
             ) : null}
             <div className="accountLogin">

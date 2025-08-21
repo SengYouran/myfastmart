@@ -33,7 +33,6 @@ import { useRef } from "react"; // បន្ថែមលើគេ
 const allDataProduct = createContext({ allDataProduct: [] });
 const useDataProduct = () => useContext(allDataProduct);
 function Context({ children }) {
- 
   //========================================================
   const [searchActive, setSearchActive] = useState(false);
   const [link, setLink] = useState([]);
@@ -110,6 +109,7 @@ function Context({ children }) {
   });*/
   useEffect(() => {
     window.localStorage.setItem("StoreBagCounter", JSON.stringify(counterBag));
+
     window.localStorage.setItem(
       "storeUserAccount",
       JSON.stringify(createAccount)
@@ -280,18 +280,6 @@ function Context({ children }) {
     const new_arr_Type = ["All_Products", ...select_one_type_product];
     setLink(new_arr_Type);
   }, []);
-
-  // ✅ Auto update counterBag when counters change
-  useEffect(() => {
-    const total = Object.values(counterWishlist).reduce(
-      (sum, count) => sum + count,
-      0
-    );
-    setCounterBag(
-      (prev) =>
-        Object.values(counters).reduce((sum, count) => sum + count, 0) + total
-    );
-  }, [counterWishlist]);
 
   const [wishlistActive, setWishlistActive] = useState({});
   const [updatedWishlist, setUpdateWishlist] = useState([]);
@@ -489,6 +477,9 @@ function Context({ children }) {
       [id]: Math.max((prev[id] || 0) - 1, 0),
     }));
   }
+
+  const [updateCounter, setUpdateCounter] = useState(0);
+  // ✅ Update the counter when user clicks (only if logged in)
   function handleBagCounter() {
     if (!isLogin) {
       setAlertLogin(true);
@@ -496,16 +487,59 @@ function Context({ children }) {
       return;
     }
 
-    const total = Object.values(counters).reduce(
+    // You may no longer need this function if everything is updated via useEffect below.
+    // But if you still want it for manual trigger, you can use it.
+    const totalCounters = Object.values(counters).reduce(
       (sum, count) => sum + count,
       0
     );
-    setCounterBag(
-      (prev) =>
-        total +
-        Object.values(counterWishlist).reduce((sum, count) => sum + count, 0)
+    const totalWishlist = Object.values(counterWishlist).reduce(
+      (sum, count) => sum + count,
+      0
     );
+
+    setUpdateCounter(totalCounters + totalWishlist);
   }
+
+  // ✅ Auto update updateCounter when counters or counterWishlist changes
+  useEffect(() => {
+    const totalCounters = Object.values(counters).reduce(
+      (sum, count) => sum + count,
+      0
+    );
+    const totalWishlist = Object.values(counterWishlist).reduce(
+      (sum, count) => sum + count,
+      0
+    );
+
+    const total = totalCounters + totalWishlist;
+    setUpdateCounter(total);
+  }, [counters, counterWishlist]);
+
+  // ✅ Update createAccount when updateCounter changes
+  useEffect(() => {
+    const userIndex = createAccount.findIndex(
+      (acc) => acc.id === currentAccount.id
+    );
+
+    if (userIndex !== -1) {
+      const oldUser = createAccount[userIndex];
+
+      // 💥 Avoid writing if value is 0 or no change
+      if (updateCounter === 0 || oldUser.counterBag === updateCounter) return;
+
+      const updatedUser = {
+        ...oldUser,
+        counterBag: updateCounter,
+      };
+
+      const updatedCreateAccount = [...createAccount];
+      updatedCreateAccount[userIndex] = updatedUser;
+
+      setCreateAccount(updatedCreateAccount);
+    }
+  }, [updateCounter]);
+
   return (
     <allDataProduct.Provider
       value={{
@@ -585,7 +619,9 @@ function Context({ children }) {
         handleUWishlist,
         userPoints,
         setUpdateSpentPoint,
+        counterWishlist,
         setCountersWishlist,
+        setUpdateCounter,
       }}
     >
       {children}
