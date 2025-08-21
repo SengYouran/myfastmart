@@ -497,8 +497,14 @@ function Context({ children }) {
       (sum, count) => sum + count,
       0
     );
+    const userIndexs = createAccount.findIndex(
+      (check) => check.id === currentAccount.id
+    );
+    // Get correct user object
+    const userObj = createAccount[userIndexs];
+    const counterBags = userObj?.counterBag || 0;
 
-    setUpdateCounter(totalCounters + totalWishlist);
+    setUpdateCounter(totalCounters + totalWishlist + counterBags);
   }
 
   // ✅ Auto update updateCounter when counters or counterWishlist changes

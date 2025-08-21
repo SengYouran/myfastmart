@@ -11,13 +11,16 @@ function LinkAccount() {
     setIsSidebarOpen,
     isSidebarOpen,
     hiddenPuchased,
+    setCounters
   } = useDataProduct();
 
   function handleLogout() {
     localStorage.removeItem("isLogin");
     localStorage.removeItem("storeCurrentAccount");
+    localStorage.removeItem("Counter");
     setCurrentAccount([]);
     setIsLogin(false);
+    setCounters({})
     setTimeout(() => {
       window.location.reload();
     }, 100);

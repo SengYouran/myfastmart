@@ -96,15 +96,21 @@ function Cart({ setShowOverlyBG }) {
   function resetNewCounter(newCounter, id) {
     const oldItem = renderItemBag.find((check) => check.id === id);
     const oldCount = oldItem?.counters || 0;
-    const userIndexs = createAccount.findIndex(
-      (check) => check.id === currentAccount.id
+    //set condittion to delete counterWishlist cuz don't deleted it
+    // counterWishlist add new counter ,if = 10 that = 11 check more context
+    const newCounterWishlist = Object.fromEntries(
+      Object.entries(counterWishlist).filter(([key, value]) => key != id)
     );
+    setCountersWishlist(newCounterWishlist);
+    //=============================end======================================
+    // userIndexs = createAccount.findIndex(
+    //   (check) => check.id === currentAccount.id
+    // );
     // Get correct user object
-    const userObj = createAccount[userIndexs];
-    const counterBags = userObj?.counterBag || 0;
-
-    const newTotal = counterBags - oldCount + newCounter;
-    setUpdateCounter(newTotal);
+    // const userObj = createAccount[userIndexs];
+    // const counterBags = userObj?.counterBag || 0;
+    //const newTotal = counterBags - oldCount + newCounter;
+    //setUpdateCounter(newTotal) if you want to add
     setCounters((prev) => ({
       ...prev,
       [id]: newCounter,
@@ -157,6 +163,11 @@ function Cart({ setShowOverlyBG }) {
                 product_name,
                 counters,
               } = render;
+
+              const USD = parseFloat(product_price.trim().replace("$", ""));
+              const khmerMoneyRaw = Math.round(USD * 4000); // គណនាជាពិត
+              const KHR =
+                new Intl.NumberFormat("km-KH").format(khmerMoneyRaw) + " ៛";
               return (
                 <React.Fragment key={id}>
                   <div
@@ -219,7 +230,7 @@ function Cart({ setShowOverlyBG }) {
                       </div>
                       <div className="price-checkout">
                         <p className="after-dis">តម្លៃបញ្ចុះរួច:</p>
-                        <p className="curr-price">KHR 0</p>
+                        <p className="curr-price">KHR {KHR}</p>
                       </div>
                     </div>
                   </div>

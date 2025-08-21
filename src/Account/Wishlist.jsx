@@ -38,21 +38,11 @@ function Wishlist() {
         [id]: currentValue + 1,
       };
     });
-
-    // ✅ 3. Update counterBag inside createAccount
-    const updatedCreateAccount = [...createAccount];
-    const oldUser = updatedCreateAccount[userIndex];
-    const newCounterBag = (oldUser.counterBag || 0) + 1;
-
-    setUpdateCounter(newCounterBag);
-    updatedCreateAccount[userIndex] = {
-      ...oldUser,
-      counterBag: newCounterBag,
-    };
-    setCreateAccount(updatedCreateAccount);
+    
   }
 
   function removeWishlist(id) {
+    
     const findIndexUser = createAccount.find(
       (check) => check.id === currentAccount.id
     );
