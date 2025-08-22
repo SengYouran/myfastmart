@@ -14,7 +14,6 @@ function ChildOrderProduct({ moneyKhmer, orderProduct, card }) {
     handleCartItem,
     handleCounterDash,
     handleCounterPlus,
-    handleBagCounter,
     isLogin,
   } = useDataProduct();
   return (
@@ -62,7 +61,6 @@ function ChildOrderProduct({ moneyKhmer, orderProduct, card }) {
               className="text_add"
               onClick={() => {
                 setShowOverlyBG(true);
-                handleBagCounter();
                 handleCartItem(id);
                 if (!isLogin) return;
                 setShowBag(true);

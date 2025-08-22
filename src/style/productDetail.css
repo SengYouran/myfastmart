@@ -233,6 +233,41 @@
   pointer-events: all;
   opacity: 1;
 }
+.child_custom_x {
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+.child_custom_x .custom_x {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 0.2rem;
+  background-color: #000;
+  transform-origin: center;
+  transition: all 0.2s ease-in-out;
+}
+.child_custom_x .custom_x:first-child {
+  transform: rotate(45deg);
+}
+.child_custom_x .custom_x:last-child {
+  transform: rotate(-45deg);
+}
+.child_custom_x:hover .custom_x {
+  transform: rotate(0);
+}
+.fa-xmark {
+  float: right;
+  padding: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
 .hero-products1 .fa-x:hover {
   transform: rotate(180deg);
   text-shadow: 0 0 1rem #4caf50, 0 0 2rem #4caf50;

@@ -7,7 +7,6 @@ function RenderProduct({ data }) {
     counters,
     handleCounterPlus,
     handleCounterDash,
-    handleBagCounter,
     handleCartItem,
     handleUWishlist,
     createAccount,
@@ -121,7 +120,6 @@ function RenderProduct({ data }) {
                 <i
                   className="fa-solid fa-plus add_cart"
                   onClick={() => {
-                    handleBagCounter();
                     handleCartItem(id);
                   }}
                 ></i>

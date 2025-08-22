@@ -8,8 +8,8 @@ function SearchProduct() {
     setActive,
     searchActive,
     setSearchActive,
+    valueSearch, setValueSearch
   } = useDataProduct();
-  const [valueSearch, setValueSearch] = useState("");
   const [filterValueProduct, setFilterValueProduct] = useState([]);
   const focusSearch = useRef(null);
   const navigate = useNavigate();
@@ -47,14 +47,11 @@ function SearchProduct() {
       const filterValue = joinAllArrayProduct.filter((filter) =>
         filter.product_name.toLowerCase().includes(valueProduct)
       );
-     
+
       setFilterValueProduct(filterValue);
     }, 300);
   }
-  function bgGroundOverly() {
-    setValueSearch("");
-    setSearchActive(false);
-  }
+
   return (
     <>
       <div className={`super_search ${searchActive ? "active" : ""}`}>
@@ -74,7 +71,10 @@ function SearchProduct() {
       </div>
       <div
         className={`BgOverlay ${searchActive ? "active" : ""}`}
-        onClick={bgGroundOverly}
+        onClick={() => {
+          setValueSearch("");
+          setSearchActive(false);
+        }}
       ></div>
     </>
   );

@@ -35,6 +35,7 @@ const useDataProduct = () => useContext(allDataProduct);
 function Context({ children }) {
   //========================================================
   const [searchActive, setSearchActive] = useState(false);
+  const [valueSearch, setValueSearch] = useState("");
   const [link, setLink] = useState([]);
   const [active, setActive] = useState("All_Products");
   const [filterProduct, setFilterProduct] = useState(joinAllArrayProduct);
@@ -57,15 +58,6 @@ function Context({ children }) {
       return {};
     }
   });
-  const [counterWishlist, setCountersWishlist] = useState(() => {
-    try {
-      const storeCounter = localStorage.getItem("CounterWishlist");
-      return storeCounter ? JSON.parse(storeCounter) : {};
-    } catch (err) {
-      return {};
-    }
-  });
-
   const [isLogin, setIsLogin] = useState(() => {
     try {
       const storedLogin = localStorage.getItem("isLogin");
@@ -90,14 +82,7 @@ function Context({ children }) {
       return [];
     }
   });
-  const [counterBag, setCounterBag] = useState(() => {
-    try {
-      const storeCounters = localStorage.getItem("StoreBagCounter");
-      return storeCounters ? JSON.parse(storeCounters) : 0;
-    } catch (err) {
-      return [];
-    }
-  });
+
   const [purchased, setPurchased] = useState([]);
   /* const [purchased, setPurchased] = useState(() => {
     try {
@@ -108,7 +93,6 @@ function Context({ children }) {
     }
   });*/
   useEffect(() => {
-    window.localStorage.setItem("StoreBagCounter", JSON.stringify(counterBag));
 
     window.localStorage.setItem(
       "storeUserAccount",
@@ -119,12 +103,9 @@ function Context({ children }) {
       JSON.stringify(currentAccount)
     );
     window.localStorage.setItem("Counter", JSON.stringify(counters));
-    window.localStorage.setItem(
-      "CounterWishlist",
-      JSON.stringify(counterWishlist)
-    );
+   
     window.localStorage.setItem("isLogin", JSON.stringify(isLogin));
-  }, [counterBag, createAccount, currentAccount, isLogin, counters]);
+  }, [ createAccount, currentAccount, isLogin, counters]);
   const [hidden, setHidden] = useState(false); //form login or register
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -478,73 +459,9 @@ function Context({ children }) {
     }));
   }
 
-  const [updateCounter, setUpdateCounter] = useState(0);
-  // ✅ Update the counter when user clicks (only if logged in)
-  function handleBagCounter() {
-    if (!isLogin) {
-      setAlertLogin(true);
-      setShowOverlyBG(true);
-      return;
-    }
+  
 
-    // You may no longer need this function if everything is updated via useEffect below.
-    // But if you still want it for manual trigger, you can use it.
-    const totalCounters = Object.values(counters).reduce(
-      (sum, count) => sum + count,
-      0
-    );
-    const totalWishlist = Object.values(counterWishlist).reduce(
-      (sum, count) => sum + count,
-      0
-    );
-    const userIndexs = createAccount.findIndex(
-      (check) => check.id === currentAccount.id
-    );
-    // Get correct user object
-    const userObj = createAccount[userIndexs];
-    const counterBags = userObj?.counterBag || 0;
 
-    setUpdateCounter(totalCounters + totalWishlist + counterBags);
-  }
-
-  // ✅ Auto update updateCounter when counters or counterWishlist changes
-  useEffect(() => {
-    const totalCounters = Object.values(counters).reduce(
-      (sum, count) => sum + count,
-      0
-    );
-    const totalWishlist = Object.values(counterWishlist).reduce(
-      (sum, count) => sum + count,
-      0
-    );
-
-    const total = totalCounters + totalWishlist;
-    setUpdateCounter(total);
-  }, [counters, counterWishlist]);
-
-  // ✅ Update createAccount when updateCounter changes
-  useEffect(() => {
-    const userIndex = createAccount.findIndex(
-      (acc) => acc.id === currentAccount.id
-    );
-
-    if (userIndex !== -1) {
-      const oldUser = createAccount[userIndex];
-
-      // 💥 Avoid writing if value is 0 or no change
-      if (updateCounter === 0 || oldUser.counterBag === updateCounter) return;
-
-      const updatedUser = {
-        ...oldUser,
-        counterBag: updateCounter,
-      };
-
-      const updatedCreateAccount = [...createAccount];
-      updatedCreateAccount[userIndex] = updatedUser;
-
-      setCreateAccount(updatedCreateAccount);
-    }
-  }, [updateCounter]);
 
   return (
     <allDataProduct.Provider
@@ -562,16 +479,16 @@ function Context({ children }) {
         handleCounterPlus,
         counters,
         setCounters,
-        counterBag,
+       
         dropItem,
         setDropItem,
         showOverlyBG,
         setShowOverlyBG,
-        handleBagCounter,
+      
         handleCartItem,
         handleAddress,
         handleBanks,
-        setCounterBag,
+        
         hidden,
         setHidden,
         email,
@@ -625,9 +542,7 @@ function Context({ children }) {
         handleUWishlist,
         userPoints,
         setUpdateSpentPoint,
-        counterWishlist,
-        setCountersWishlist,
-        setUpdateCounter,
+        valueSearch, setValueSearch
       }}
     >
       {children}

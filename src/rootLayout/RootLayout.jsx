@@ -1,4 +1,4 @@
-import {Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Footer from "../page/Footer";
 import Cart from "../ProductPage/Cart";
@@ -9,9 +9,16 @@ import Calendar from "../Form_SignUP/Calendar";
 import { useRef } from "react";
 import "../style/form.css";
 import Scroll from "../Scroll";
+import "../style/product.css";
 function RootLayout() {
-  const { cartItem, showOverlyBG, setShowOverlyBG} =
-    useDataProduct(); // ✅ Get necessary state
+  const {
+    cartItem,
+    showOverlyBG,
+    setShowOverlyBG,
+    searchActive,
+    setSearchActive,
+    setValueSearch,
+  } = useDataProduct(); // ✅ Get necessary state
   const refCalendar = useRef();
   const openCalendar = () => {
     if (refCalendar.current) {
@@ -31,6 +38,13 @@ function RootLayout() {
       {/* ✅ Overlay */}
       <div
         className={`bgOverlyFull ${showOverlyBG ? "showOverlyBG" : ""}`}
+      ></div>
+      <div
+        className={`BgOverlay ${searchActive ? "active" : ""}`}
+        onClick={() => {
+          setValueSearch("");
+          setSearchActive(false);
+        }}
       ></div>
       <Outlet />
       <Footer />

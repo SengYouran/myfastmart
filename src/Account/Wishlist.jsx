@@ -8,12 +8,10 @@ function Wishlist() {
     createAccount,
     isSidebarOpen,
     handleCartItem,
-    setCountersWishlist,
-    setCreateAccount,
     wishlistActive,
     setWishlistActive,
     setUpdateWishlist,
-    setUpdateCounter,
+    
   } = useDataProduct();
   const navigate = useNavigate();
   const findIndexUser = createAccount.find(
@@ -29,15 +27,6 @@ function Wishlist() {
 
     // ✅ 1. Remove from wishlist FIRST (to prevent UI lag)
     removeWishlist(id);
-
-    // ✅ 2. Update counterWishlist
-    setCountersWishlist((prev) => {
-      const currentValue = prev[id] || 0;
-      return {
-        ...prev,
-        [id]: currentValue + 1,
-      };
-    });
     
   }
 

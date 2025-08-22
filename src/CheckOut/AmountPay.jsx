@@ -12,7 +12,6 @@ function AmountPay({ money }) {
     setDropItem,
     setShowOverlyBG,
     setPurchased,
-    setCountersWishlist,
     setCounters,
     setPoint,
     selectBank,
@@ -52,13 +51,10 @@ function AmountPay({ money }) {
     });
 
     if (!selectBank) return;
-
     const userIndex = createAccount.findIndex(
       (check) => check.id === currentAccount.id
     );
-
     if (userIndex === -1) return;
-
     const user = createAccount[userIndex];
     const storeBags = user.storeBags || [];
     const purchasedWithBank = storeBags.map((item) => ({
@@ -66,19 +62,15 @@ function AmountPay({ money }) {
       dateTime,
       bank: selectBank, // ✅ add bank
     }));
-
     // Clear storeBags and set purchased
     const updateAccount = [...createAccount];
     updateAccount[userIndex] = {
       ...user,
       storeBags: [],
-      counterBag: 0,
       purchased: [...(user.purchased || []), ...purchasedWithBank], //update old and new to purchased
     };
-
     setCreateAccount(updateAccount);
     setPurchased(purchasedWithBank); // trigger useEffect (even though it's no longer strictly needed)
-    setCountersWishlist({});
     setCounters({});
   }
   const [totalPaymet, setTotalPayment] = useState(0);

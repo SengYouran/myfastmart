@@ -8,7 +8,6 @@ function SimilarProduct({ product_type }) {
     counters,
     handleCounterDash,
     handleCounterPlus,
-    handleBagCounter,
     handleCartItem,
     wishlistActive,
     handleUWishlist,
@@ -61,7 +60,6 @@ function SimilarProduct({ product_type }) {
               <i
                 className="fa-solid fa-plus add_cart"
                 onClick={() => {
-                  handleBagCounter();
                   handleCartItem(id);
                 }}
               ></i>

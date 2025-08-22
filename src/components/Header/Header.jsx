@@ -20,7 +20,6 @@ function Header({ openCalendar }) {
     setDropItem,
     setHidden,
     isLogin,
-    searchActive,
     setSearchActive,
     createAccount,
     currentAccount,
@@ -57,22 +56,27 @@ function Header({ openCalendar }) {
   }
 
   useEffect(() => {
-  // បើមិន login ឬ currentAccount មិនមាន ID កុំដំណើរការ
-  if (!isLogin || !currentAccount?.id) {
-    setNewCounter(0);
-    return;
-  }
+    // បើមិន login ឬ currentAccount មិនមាន ID កុំដំណើរការ
+    if (!isLogin || !currentAccount?.id) {
+      setNewCounter(0);
+      return;
+    }
 
-  // រក user ត្រឹមត្រូវ
-  const counterUser = createAccount.find(
-    (check) => check.id === currentAccount.id
-  );
-
-  const counterBags = counterUser?.counterBag ?? 0;
-
-
-  setNewCounter(counterBags);
-}, [createAccount, currentAccount?.id, isLogin]);
+    // រក user ត្រឹមត្រូវ
+    const counterUser = createAccount.find(
+      (check) => check.id === currentAccount.id
+    );
+    /*let totalCounters = 0;
+     storeBags.forEach((item) => {
+     totalCounters += item.counters || 0;
+      }); */
+    const storeBags = counterUser?.storeBags || [];
+    const totalCounters = storeBags.reduce(
+      (sum, item) => sum + (item.counters || 0),
+      0
+    );
+    setNewCounter(totalCounters);
+  }, [createAccount, currentAccount?.id, isLogin]);
 
   return (
     <>

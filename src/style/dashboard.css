@@ -432,7 +432,7 @@
   display: none; /* Chrome, Safari */
 }
 .container_product_milk .child_top_milk {
-  border: 0.1rem solid #000;
+  border: 0.1rem solid #4caf50;
   border-radius: 1rem;
   padding: 1rem;
   flex: 0 0 15.6%; /* មិនអោយវាខូច width ខ្លួន */
